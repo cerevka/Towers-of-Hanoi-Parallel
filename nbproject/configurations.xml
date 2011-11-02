@@ -4,6 +4,12 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Board.h</itemPath>
+      <itemPath>Input.h</itemPath>
+      <itemPath>Move.h</itemPath>
+      <itemPath>Serializable.h</itemPath>
+      <itemPath>Solver.h</itemPath>
+      <itemPath>Tower.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +18,11 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Board.cpp</itemPath>
+      <itemPath>Input.cpp</itemPath>
+      <itemPath>Move.cpp</itemPath>
+      <itemPath>Solver.cpp</itemPath>
+      <itemPath>Tower.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -31,9 +42,12 @@
     <conf name="Debug" type="1">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
-        <compilerSet>GNU|GNU</compilerSet>
+        <compilerSet>MPI|GNU</compilerSet>
       </toolsSet>
       <compileType>
+        <cTool>
+          <commandlineTool>gcc</commandlineTool>
+        </cTool>
       </compileType>
     </conf>
     <conf name="Release" type="1">
