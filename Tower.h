@@ -8,6 +8,7 @@
 #ifndef TOWER_H
 #define	TOWER_H
 
+#include <string>
 #include <vector>
 #include <iostream>
 
@@ -35,13 +36,31 @@ public:
      * Prida token na vrchol vez.
      * @param int Hodnota tokenu.
      */
-    void addToken(int);
+    void addTop(int);
+    
+    /**
+     * Vrati hodnotu tokenu na vrcholu veze.
+     * @return int Hodnota tokenu na vrcholu veze.
+     */
+    int getTop(void) const;
     
     /**
      * Sunda token z vrcholu veze.
-     * @return Hodnota sundaneho tokenu.
+     * @return int Hodnota sundaneho tokenu.
      */
-    int removeToken(void);
+    int removeTop(void);
+    
+    /**
+     * Rozhodne, zda je vez prazdna.
+     * @return bool TRUE vez je prazdna, jinak FALSE.
+     */
+    bool isEmpty(void) const;
+    
+    /**
+     * Vrati pocet tokenu na vezi.
+     * @return int Pocet tokenu na vezi.
+     */
+    int size(void) const;
     
     /**
      * Pretizeny operator vypisu do streamu.

@@ -67,8 +67,7 @@ public:
     /**
      * Vytvori reverzeni tah.
      * @param const Move& Tah, ke kteremu se bude konstruovat inverzni tah.
-     * @param Move& Tah, do ktereho se inverzni tah zkonstruuje.
-     * @return Move& Inverzni tah.
+     * @param Move& Tah, do ktereho se inverzni tah zkonstruuje. 
      */
     void getReverse(const Move&, Move&) const;
 

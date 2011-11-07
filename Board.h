@@ -56,6 +56,20 @@ private:
     void doMove(const Move&);
     
     /**
+     * Prida token na vrchol veze.
+     * @param int Index veze.
+     * @param int Hodnota tokenu.
+     */
+    void addTowerTop(int, int);
+    
+    /**
+     * Rozhodne, zda je vez kompletni.
+     * @param int Index veze.
+     * @return TRUE vez je kompletni, jinak FALSE.
+     */
+    bool isTowerComplete(int) const;
+    
+    /**
      * Pretizeni operatoru pro vypis do streamu.
      * @param ostream& Vstupni stream.
      * @param const Board& Vypisovany objekt.
