@@ -57,6 +57,7 @@ private:
     
     /**
      * Prida token na vrchol veze.
+     * Nekontroluje, zda pak bude vez validni!
      * @param int Index veze.
      * @param int Hodnota tokenu.
      */
@@ -68,6 +69,14 @@ private:
      * @return TRUE vez je kompletni, jinak FALSE.
      */
     bool isTowerComplete(int) const;
+    
+    /**
+     * Vraci dolni mez reseni - minimalni pocet tahu, ktery je schopny
+     * transformovat desku to hledaneho reseni.
+     * @param int Index cilove veze.
+     * @return int Pocet tahu potrebnych k transformaci.
+     */
+    int getLowBound(int) const;
     
     /**
      * Pretizeni operatoru pro vypis do streamu.

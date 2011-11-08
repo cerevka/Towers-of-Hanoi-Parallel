@@ -26,6 +26,10 @@ void Move::getReverse(const Move& _move, Move& _reverseMove) const {
     _reverseMove.value = _move.value;
 }
 
+bool Move::operator==(const Move& _move) {
+    return (from == _move.from && to == _move.to && value == _move.value);
+}
+
 ostream& operator<<(ostream& _ostream, const Move& _move) {
     _ostream << "[" << _move.value << ", " << _move.from << " -> " << _move.to << "]";
     return _ostream;

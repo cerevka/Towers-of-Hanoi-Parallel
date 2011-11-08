@@ -14,7 +14,14 @@ targetTower(_targetTower), maxDepth(_maxDepth) {
 }
 
 Solver::~Solver() {
-    // Uvolni vektor reseni, vola destruktory vsech odstranovanych prvku.
-    solution.erase(solution.begin(), solution.end());
+
+}
+
+void Solver::solve(vector<Move>&) {
+    throw "Not implemented yet.";
+}
+
+void Solver::expandStack(void) {
+    throw "Not implemented yet.";    
 }
 

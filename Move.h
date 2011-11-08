@@ -72,6 +72,13 @@ public:
     void getReverse(const Move&, Move&) const;
 
     /**
+     * Pretizeny operator pro porovnani dvou tahu.
+     * @param Move& Tah, se kterym se porovnava.
+     * @return TRUE jsou-li tahy stejne, jinak FALSE.
+     */
+    bool operator==(const Move&);    
+    
+    /**
      * Pretizeny operator vypisu do streamu.
      * @param ostream& Vstupni stream.
      * @param const Move& Vypisovany tah.

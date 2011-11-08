@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/SpaceItem.o \
 	${OBJECTDIR}/Tower.o \
 	${OBJECTDIR}/Input.o \
 	${OBJECTDIR}/Solver.o \
@@ -70,6 +71,11 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/SpaceItem.o: SpaceItem.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/SpaceItem.o SpaceItem.cpp
 
 ${OBJECTDIR}/Tower.o: Tower.cpp 
 	${MKDIR} -p ${OBJECTDIR}

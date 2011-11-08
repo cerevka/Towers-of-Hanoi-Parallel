@@ -62,6 +62,10 @@ bool Board::isTowerComplete(int _tower) const {
     return false;
 }
 
+int Board::getLowBound(int _tower) const {
+    throw "Not implemented yet.";
+}
+
 ostream& operator<<(ostream& _ostream, const Board& _board) {
     int order = 0;
     for (vector<Tower>::const_iterator it = _board.towers.begin(); it < _board.towers.end(); ++it) {

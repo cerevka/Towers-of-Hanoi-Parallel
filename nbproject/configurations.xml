@@ -9,6 +9,7 @@
       <itemPath>Move.h</itemPath>
       <itemPath>Serializable.h</itemPath>
       <itemPath>Solver.h</itemPath>
+      <itemPath>SpaceItem.h</itemPath>
       <itemPath>Tower.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -22,6 +23,7 @@
       <itemPath>Input.cpp</itemPath>
       <itemPath>Move.cpp</itemPath>
       <itemPath>Solver.cpp</itemPath>
+      <itemPath>SpaceItem.cpp</itemPath>
       <itemPath>Tower.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
