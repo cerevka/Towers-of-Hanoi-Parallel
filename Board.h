@@ -24,6 +24,12 @@ class Board {
 public:
     
     /**
+     * Prazdny konstruktor.
+     * Nutne pak desku inicializovat pomocí {@link #init}.     
+     */
+    Board();
+    
+    /**
      * Konstrutor.
      * @param int Pocet vezi.
      */
@@ -34,13 +40,19 @@ public:
      */
     virtual ~Board();
     
-private:
+    /**
+     * Inicializuje desku - pripravi na ni veze.
+     * @param int Pocet vezi.
+     */
+    void init(int);
     
-    /** Mnozina vezi. */
-    vector<Tower> towers;
-    
-    /** Celkovy pocet tokenu. */
-    int tokensCount;
+    /**
+     * Prida token na vrchol veze.
+     * Nekontroluje, zda pak bude vez validni!
+     * @param int Index veze.
+     * @param int Hodnota tokenu.
+     */
+    void addTowerTop(int, int);
     
     /**
      * Rozhodne, zda je tah na desce mozny.
@@ -56,27 +68,27 @@ private:
     void doMove(const Move&);
     
     /**
-     * Prida token na vrchol veze.
-     * Nekontroluje, zda pak bude vez validni!
-     * @param int Index veze.
-     * @param int Hodnota tokenu.
-     */
-    void addTowerTop(int, int);
-    
-    /**
      * Rozhodne, zda je vez kompletni.
      * @param int Index veze.
      * @return TRUE vez je kompletni, jinak FALSE.
      */
     bool isTowerComplete(int) const;
     
+private:
+    
+    /** Mnozina vezi. */
+    vector<Tower> towers;
+    
+    /** Celkovy pocet tokenu. */
+    int tokensCount;
+        
     /**
      * Vraci dolni mez reseni - minimalni pocet tahu, ktery je schopny
      * transformovat desku to hledaneho reseni.
      * @param int Index cilove veze.
      * @return int Pocet tahu potrebnych k transformaci.
      */
-    int getLowBound(int) const;
+    int getLowerBound(int) const;
     
     /**
      * Pretizeni operatoru pro vypis do streamu.
