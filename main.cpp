@@ -10,6 +10,7 @@
 //#include <mpi.h>
 
 #include "Input.h"
+#include "Solver.h"
 
 using namespace std;
 
@@ -24,6 +25,18 @@ int main(int argc, char** argv) {
         Board board;
         Input input(&board);
         input.parseArguments(argc, argv); 
+        
+        Solver solver(&board, input.getTargetTower(), input.getMaxDepth());
+        vector<Move> solution;
+        solver.solve(solution);
+        
+        // Vypise reseni.
+        for (vector<Move>::const_iterator it = solution.begin(); it != solution.end(); ++it) {
+            cout << *it << endl;
+        }
+        
+        cout << "Solution has " << solution.size() << " steps." << endl;
+        
         return 0;
         
     } catch (const char* exception) {

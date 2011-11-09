@@ -22,30 +22,30 @@ using namespace std;
  */
 class Board {
 public:
-    
+
     /**
      * Prazdny konstruktor.
      * Nutne pak desku inicializovat pomocí {@link #init}.     
      */
     Board();
-    
+
     /**
      * Konstrutor.
      * @param int Pocet vezi.
      */
     Board(int);
-    
+
     /**
      * Destruktor.
      */
     virtual ~Board();
-    
+
     /**
      * Inicializuje desku - pripravi na ni veze.
      * @param int Pocet vezi.
      */
     void init(int);
-    
+
     /**
      * Prida token na vrchol veze.
      * Nekontroluje, zda pak bude vez validni!
@@ -53,35 +53,42 @@ public:
      * @param int Hodnota tokenu.
      */
     void addTowerTop(int, int);
-    
+
+    /**
+     * Vrati vrchol cilove veze.
+     * @param int Index cilove veze.
+     * @return int Vrchol cilove veze.
+     */
+    int getTowerTop(int) const;
+
     /**
      * Rozhodne, zda je tah na desce mozny.
      * @param const Move& Posuzovany tah.
      * @return TRUE tah je mozny, jinak FALSE
      */
     bool isMoveCorrect(const Move&) const;
-    
+
     /**
      * Vykona nad deskou tah.
      * @param const Move& Provadeny tah.
      */
     void doMove(const Move&);
-    
+
     /**
      * Rozhodne, zda je vez kompletni.
      * @param int Index veze.
      * @return TRUE vez je kompletni, jinak FALSE.
      */
     bool isTowerComplete(int) const;
-    
-private:
-    
-    /** Mnozina vezi. */
-    vector<Tower> towers;
-    
-    /** Celkovy pocet tokenu. */
-    int tokensCount;
-        
+
+    /**
+     * Vrati velikost desky.
+     * @return int Pocet vezi na desce.
+     */
+    inline int size(void) const {
+        return towers.size();
+    }
+
     /**
      * Vraci dolni mez reseni - minimalni pocet tahu, ktery je schopny
      * transformovat desku to hledaneho reseni.
@@ -89,7 +96,15 @@ private:
      * @return int Pocet tahu potrebnych k transformaci.
      */
     int getLowerBound(int) const;
-    
+
+private:
+
+    /** Mnozina vezi. */
+    vector<Tower> towers;
+
+    /** Celkovy pocet tokenu. */
+    int tokensCount;
+
     /**
      * Pretizeni operatoru pro vypis do streamu.
      * @param ostream& Vstupni stream.

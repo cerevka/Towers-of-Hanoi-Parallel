@@ -45,6 +45,15 @@ public:
     int getTop(void) const;
     
     /**
+     * Vrati hodnotu tokenu na dane pozici.
+     * @param Index tokenu.
+     * @return Hodnota vybraneho tokenu.
+     */
+    inline int getToken(int _token) const {
+        return tokens[_token];
+    }
+    
+    /**
      * Sunda token z vrcholu veze.
      * @return int Hodnota sundaneho tokenu.
      */

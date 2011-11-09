@@ -62,7 +62,14 @@ void Board::addTowerTop(int _tower, int _value) {
     ++tokensCount;
 }
 
-bool Board::isTowerComplete(int _tower) const {
+int Board::getTowerTop(int _tower) const {
+    if (towers[_tower].size() == 0) {
+        return 0;
+    }
+    return towers[_tower].getTop();
+}
+
+bool Board::isTowerComplete(int _tower) const {    
     if (towers[_tower].size() == tokensCount) {
         return true;
     }
@@ -70,7 +77,14 @@ bool Board::isTowerComplete(int _tower) const {
 }
 
 int Board::getLowerBound(int _tower) const {
-    throw "Not implemented yet.";
+    const Tower* const tower =  &(towers[_tower]);
+    if (tower->size() == 0) return tokensCount;
+    int ok = 0;
+    for (int i = tokensCount; i > 0; --i) {
+        if ( (tokensCount - i) >=  tower->size()) continue;
+        if (tower->getToken(tokensCount - i) == i) ++ok;
+    }
+    return (tower->size() - ok) * 2 + tokensCount - tower->size();
 }
 
 ostream& operator<<(ostream& _ostream, const Board& _board) {   

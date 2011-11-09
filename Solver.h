@@ -52,11 +52,13 @@ private:
     /** Maximalni hloubka prohledavenho prostoru. */
     int maxDepth;
     
+    /** Celkovy pocet prostoru vlozeny na zasobnik. */
+    int pushCount;
+    
     /** Vychozi deska. */
     const Board* initBoard;
     
-    /** Posloupnost tahu, ktere vedou k reseni. */
-    vector<Move> solution;    
+    int bestSolutionDepth;
     
     /** Zasobnik prohledavanych prostoru. */
     stack<SpaceItem*> space;
@@ -64,7 +66,7 @@ private:
     /**
      * Udela expanzi vrcholu zasobniku.
      */
-    void expandStack(void);
+    void expandTop(void);
 
 };
 
