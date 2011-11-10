@@ -81,7 +81,7 @@ void Input::generateBoard() {
     // Inicializuje randomizer.
     srand(time(NULL));
     
-    for (int i = (tokensCount - 1); i >= 0; --i) {
+    for (int i = tokensCount; i > 0; --i) {
         // Nahodne se urci vez.
         int tower = rand() % towersCount;
         board->addTowerTop(tower, i);
