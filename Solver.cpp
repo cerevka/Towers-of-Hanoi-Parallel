@@ -16,10 +16,10 @@ targetTower(_targetTower), maxDepth(_maxDepth), pushCount(0
 
 Solver::~Solver() {
     while (!space.empty()) {
-        SpaceItem* spaceItem = space.top();
+        SpaceItem* spaceItem = space.back();
         delete spaceItem;
         spaceItem = NULL;
-        space.pop();
+        space.pop_back();
     }
 }
 
@@ -33,7 +33,7 @@ void Solver::solve(vector<Move>& _solution) {
     
     Move firstMove(0, 0, 0);
     SpaceItem* firstSpaceItem = new SpaceItem(*initBoard, firstMove);
-    space.push(firstSpaceItem);
+    space.push_back(firstSpaceItem);
     expandTop();
     int actualDepth = 1;    
     
@@ -44,39 +44,42 @@ void Solver::solve(vector<Move>& _solution) {
         }
         
         // Jiz expandovany stav se odstrani pri navratu do nej.        
-        if (actualDepth > space.top()->getDepth()) {            
-            SpaceItem* spaceItem = space.top();
-            space.pop();            
+        if (actualDepth > space.back()->getDepth()) {            
+            SpaceItem* spaceItem = space.back();
+            space.pop_back();            
             delete spaceItem;
+            spaceItem = NULL;
             actualSolution.pop_back();            
             --actualDepth;
             continue;
         }
         
         // Nasel jsem reseni.
-        if (space.top()->getBoard()->isTowerComplete(targetTower)) {               
-            actualSolution.push_back(*(space.top()->getMove()));
+        if (space.back()->getBoard()->isTowerComplete(targetTower)) {               
+            actualSolution.push_back(*(space.back()->getMove()));
             // Reseni je lepsi nez dosavadni.
             if (_solution.size() == 0 || _solution.size() > actualSolution.size()) {               
                 _solution = actualSolution;         
                 bestSolutionDepth = _solution.size();                
             }
             actualSolution.pop_back();
-            SpaceItem* spaceItem = space.top();
-            space.pop();           
+            SpaceItem* spaceItem = space.back();
+            space.pop_back();           
             delete spaceItem;
+            spaceItem = NULL;
             continue;
         }
         
         // Jsem ve vetsi hloubce nez nejlepsi reseni.
-        if (space.top()->getDepth() >= bestSolutionDepth) { 
-            SpaceItem* spaceItem = space.top();
-            space.pop();           
+        if (space.back()->getDepth() >= bestSolutionDepth) { 
+            SpaceItem* spaceItem = space.back();
+            space.pop_back();           
             delete spaceItem;
+            spaceItem = NULL;
             continue;
         }              
         
-        actualSolution.push_back(*(space.top()->getMove()));        
+        actualSolution.push_back(*(space.back()->getMove()));        
         ++actualDepth;        
         expandTop();          
     }    
@@ -84,10 +87,10 @@ void Solver::solve(vector<Move>& _solution) {
 }
 
 void Solver::expandTop(void) {     
-    int depth = space.top()->getDepth() + 1;
-    const Board* actualBoard = space.top()->getBoard();
-    const Move* lastMove = space.top()->getMove();
-    const vector<Move>* history = space.top()->getMoves(); 
+    int depth = space.back()->getDepth() + 1;
+    const Board* actualBoard = space.back()->getBoard();
+    const Move* lastMove = space.back()->getMove();
+    const vector<Move>* history = space.back()->getMoves(); 
     
     for (int i = 0; i < actualBoard->size(); ++i) {
         for (int j = 0; j < actualBoard->size(); ++j) {            
@@ -110,7 +113,7 @@ void Solver::expandTop(void) {
             if ((depth + lowerBound) > bestSolutionDepth) continue;
             
             SpaceItem* spaceItem = new SpaceItem(myBoard, *history, move);
-            space.push(spaceItem);
+            space.push_back(spaceItem);
             ++pushCount;            
         }
     }    

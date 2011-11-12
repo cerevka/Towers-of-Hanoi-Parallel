@@ -9,7 +9,6 @@
 #define	SOLVER_H
 
 #include <vector>
-#include <stack>
 #include "Move.h"
 #include "Board.h"
 #include "SpaceItem.h"
@@ -61,7 +60,7 @@ private:
     int bestSolutionDepth;
     
     /** Zasobnik prohledavanych prostoru. */
-    stack<SpaceItem*> space;
+    vector<SpaceItem*> space;
     
     /**
      * Udela expanzi vrcholu zasobniku.
