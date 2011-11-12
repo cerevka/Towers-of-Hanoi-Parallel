@@ -75,13 +75,6 @@ public:
     void getReverse(const Move&, Move&) const;
 
     /**
-     * Pretizeny operator pro porovnani dvou tahu.
-     * @param Move& Tah, se kterym se porovnava.
-     * @return TRUE jsou-li tahy stejne, jinak FALSE.
-     */
-    bool operator==(const Move&);
-
-    /**
      * Serializuje tah.
      * @param char* Buffer.
      * @param int& Pozice v bufferu.
@@ -94,6 +87,13 @@ public:
      * @param int& Pozice v bufferu.
      */
     void deserialize(char*, int&);
+
+    /**
+     * Pretizeny operator pro porovnani dvou tahu.
+     * @param Move& Tah, se kterym se porovnava.
+     * @return TRUE jsou-li tahy stejne, jinak FALSE.
+     */
+    bool operator==(const Move&);
 
     /**
      * Pretizeny operator vypisu do streamu.

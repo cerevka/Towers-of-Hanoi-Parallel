@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
 
             Solver solver(&board, input.getTargetTower(), input.getMaxDepth());
             vector<Move> solution;
-            //solver.solve(solution);
+            solver.solve(solution);
 
             // Vypise reseni.
             for (vector<Move>::const_iterator it = solution.begin(); it != solution.end(); ++it) {
@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
             
             SpaceItem spaceItem(board, moves, move5);
             
-            cout << "I will send: " << endl;
+            cout << endl << "I will send: " << endl;
             cout << spaceItem << endl;
             
             char buffer[BUFFER_SIZE];

@@ -5,7 +5,10 @@
  * Created on November 2, 2011, 10:21 AM
  */
 
+#include <mpi.h>
+
 #include "Move.h"
+#include "Solver.h"
 
 Move::Move() {
 
