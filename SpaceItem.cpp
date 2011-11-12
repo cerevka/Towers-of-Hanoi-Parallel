@@ -7,9 +7,14 @@
 
 #include "SpaceItem.h"
 
-SpaceItem::SpaceItem(const Board& _board, const Move& _move, int _depth) :
-board(_board), move(_move), depth(_depth) {
-    // Predane reference si do sebe zkopiruje.
+SpaceItem::SpaceItem(const Board& _board, const Move& _move) :
+board(_board) {
+    moves.push_back(_move);
+}
+
+SpaceItem::SpaceItem(const Board& _board, const vector<Move>& _moves, const Move& _move) :
+board(_board), moves(_moves) {
+    moves.push_back(_move);
 }
 
 SpaceItem::~SpaceItem() {

@@ -18,51 +18,61 @@
  */
 class SpaceItem {
 public:
-    
+
     /**
      * Konstruktor.
      * @param const Board& Aktualni deska.
-     * @param const Move& Posledni tah, ktery desku uvedl do tohoto stavu.
-     * @param int Hloubka prohledavaneho prostoru.
+     * @param const Move& Posledni tah.
      */
-    SpaceItem(const Board&, const Move&, int);
-    
-    
+    SpaceItem(const Board&, const Move&);
+
+    /**
+     * Konstruktor.
+     * @param const Board& Aktualni deska.
+     * @param const vector<Move>& Tahy, ktere predchazely vytvoreni desky.
+     * @param const Move& Posledni tah.
+     */
+    SpaceItem(const Board&, const vector<Move>&, const Move&);
+
+
     /**
      * Destruktor.
      */
     virtual ~SpaceItem();
-    
+
     /**
      * Vraci hloubku.
      * @return int Hloubka.
      */
     inline int getDepth(void) const {
-        return depth;
+        return moves.size() - 1;
+        //return depth;
     }
-    
+
     /**
      * Vraci tah.
      * @return const Move* Tah, kterym se deska dostala do tohoto stavu.
      */
     inline const Move* getMove(void) const {
-        return &move;
+        return &moves.back();
+        //return &move;
     }
-    
+
     inline const Board* getBoard(void) const {
         return &board;
     }
     
+    inline const vector<Move>* getMoves(void) const {
+        return &moves;
+    }
+
 private:
-    
+
     /** Aktualni stav desky. */
     const Board board;
-    
-    /** Posledni tah, ktery desku uvedl do aktualniho stavu. */
-    const Move move;
-    
-    /** Hloubka prohledavaneho prostoru. */
-    const int depth;
+
+    /** Sekvence tahu, ktere vedou k aktualnimu stavu desky. */
+    vector<Move> moves;
 };
 
 #endif	/* SPACEITEM_H */

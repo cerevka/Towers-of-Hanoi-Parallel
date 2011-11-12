@@ -27,7 +27,7 @@ void Solver::solve(vector<Move>& _solution) {
     if (initBoard->isTowerComplete(targetTower)) return;
     
     Move firstMove(0, 0, 0);
-    SpaceItem* firstSpaceItem = new SpaceItem(*initBoard, firstMove, 0);
+    SpaceItem* firstSpaceItem = new SpaceItem(*initBoard, firstMove);
     space.push(firstSpaceItem);
     expandTop();
     int actualDepth = 1;    
@@ -81,7 +81,8 @@ void Solver::solve(vector<Move>& _solution) {
 void Solver::expandTop(void) {     
     int depth = space.top()->getDepth() + 1;
     const Board* actualBoard = space.top()->getBoard();
-    const Move* lastMove = space.top()->getMove(); 
+    const Move* lastMove = space.top()->getMove();
+    const vector<Move>* history = space.top()->getMoves(); 
     
     for (int i = 0; i < actualBoard->size(); ++i) {
         for (int j = 0; j < actualBoard->size(); ++j) {            
@@ -103,7 +104,7 @@ void Solver::expandTop(void) {
             // Pokud dalsi krok nemuze vest reseni z definice dolni meze, koncim.
             if ((depth + lowerBound) > bestSolutionDepth) continue;
             
-            SpaceItem* spaceItem = new SpaceItem(myBoard, move, depth);
+            SpaceItem* spaceItem = new SpaceItem(myBoard, *history, move);
             space.push(spaceItem);
             ++pushCount;            
         }
