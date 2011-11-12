@@ -7,10 +7,10 @@
       <itemPath>Board.h</itemPath>
       <itemPath>Input.h</itemPath>
       <itemPath>Move.h</itemPath>
-      <itemPath>Serializable.h</itemPath>
       <itemPath>Solver.h</itemPath>
       <itemPath>SpaceItem.h</itemPath>
       <itemPath>Tower.h</itemPath>
+      <itemPath>global.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -44,7 +44,7 @@
     <conf name="Debug" type="1">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
-        <compilerSet>GNU|GNU</compilerSet>
+        <compilerSet>MPI|GNU</compilerSet>
       </toolsSet>
       <compileType>
         <cTool>

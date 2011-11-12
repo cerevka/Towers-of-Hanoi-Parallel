@@ -97,6 +97,20 @@ public:
      */
     int getLowerBound(int) const;
 
+    /**
+     * Serializuje desku.
+     * @param char* Buffer.
+     * @param int& Pozice v bufferu.
+     */
+    void serialize(char*, int&) const;
+
+    /**
+     * Deserializuje desku.
+     * @param char* Buffer.
+     * @param int& Pozice v bufferu.
+     */
+    void deserialize(char*, int&);
+
 private:
 
     /** Mnozina vezi. */

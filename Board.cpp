@@ -69,7 +69,7 @@ int Board::getTowerTop(int _tower) const {
     return towers[_tower].getTop();
 }
 
-bool Board::isTowerComplete(int _tower) const {    
+bool Board::isTowerComplete(int _tower) const {
     if (towers[_tower].size() == tokensCount) {
         return true;
     }
@@ -77,19 +77,50 @@ bool Board::isTowerComplete(int _tower) const {
 }
 
 int Board::getLowerBound(int _tower) const {
-    const Tower* const tower =  &(towers[_tower]);
+    const Tower * const tower = &(towers[_tower]);
     if (tower->size() == 0) return tokensCount;
     int ok = 0;
     for (int i = tokensCount; i > 0; --i) {
-        if ( (tokensCount - i) >=  tower->size()) continue;
+        if ((tokensCount - i) >= tower->size()) continue;
         if (tower->getToken(tokensCount - i) == i) ++ok;
     }
     return (tower->size() - ok) * 2 + tokensCount - tower->size();
 }
 
-ostream& operator<<(ostream& _ostream, const Board& _board) {   
-    int order = 0;   
-    for (vector<Tower>::const_iterator it = _board.towers.begin(); it != _board.towers.end(); ++it) {       
+void Board::serialize(char* _buffer, int& _position) const {
+    // Zabali se pocet tokenu na desce.
+    int data = tokensCount;
+    MPI_Pack(&data, 1, MPI_INT, _buffer, BUFFER_SIZE, &_position, MPI_COMM_WORLD);
+
+    // Zabali se velikost desky (pocet vezi).
+    data = size();
+    MPI_Pack(&data, 1, MPI_INT, _buffer, BUFFER_SIZE, &_position, MPI_COMM_WORLD);
+
+    // Zabali se vsechny veze na desce.
+    for (vector<Tower>::const_iterator it = towers.begin(); it < towers.end(); ++it) {
+        it->serialize(_buffer, _position);
+    }
+}
+
+void Board::deserialize(char* _buffer, int& _position) {
+    // Precte se pocet tokenu.
+    MPI_Unpack(_buffer, BUFFER_SIZE, &_position, &tokensCount, 1, MPI_INT, MPI_COMM_WORLD);
+
+    // Precte se velikost desky.
+    int size;
+    MPI_Unpack(_buffer, BUFFER_SIZE, &_position, &size, 1, MPI_INT, MPI_COMM_WORLD);
+
+    // Deserializuji se veze.
+    for (int i = 0; i < size; ++i) {
+        Tower tower;
+        tower.deserialize(_buffer, _position);
+        towers.push_back(tower); // Kopie.
+    }
+}
+
+ostream& operator<<(ostream& _ostream, const Board& _board) {
+    int order = 0;
+    for (vector<Tower>::const_iterator it = _board.towers.begin(); it != _board.towers.end(); ++it) {
         _ostream << "Tower " << order++ << ": " << (*it) << endl;
     }
     return _ostream;
