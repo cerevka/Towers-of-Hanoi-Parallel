@@ -12,6 +12,7 @@
 
 #include "Tower.h"
 #include "Move.h"
+#include "Serializable.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ using namespace std;
  * @author Tomáš Čerevka
  * @author Adam Činčura
  */
-class Board {
+class Board : public Serializable {
 public:
 
     /**
@@ -96,6 +97,20 @@ public:
      * @return int Pocet tahu potrebnych k transformaci.
      */
     int getLowerBound(int) const;
+    
+    /**
+     * Serializuje desku.
+     * @param char* Buffer.
+     * @param int& Pozice v bufferu.
+     */
+    void serialize(char*, int&) const;
+    
+    /**
+     * Deserializuje desku.
+     * @param char* Buffer.
+     * @param int& Pozice v bufferu.
+     */
+    void deserialize(char*, int&); 
 
 private:
 

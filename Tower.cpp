@@ -5,7 +5,10 @@
  * Created on November 2, 2011, 10:26 AM
  */
 
+#include <mpi.h>
+
 #include "Tower.h"
+#include "Solver.h"
 
 Tower::Tower() {
 }
@@ -33,6 +36,31 @@ bool Tower::isEmpty(void) const {
 
 int Tower::size() const {
     return tokens.size();
+}
+
+void Tower::serialize(char* _buffer, int& _position) const {
+    // Zabali se informace o velikosti veze.
+    int data = size();
+    MPI_Pack(&data, 1, MPI_INT, _buffer, BUFFER_SIZE, &_position, MPI_COMM_WORLD);
+    
+    // Zabali se tokeny na vezi.
+    for (vector<int>::const_iterator it = tokens.begin(); it < tokens.end(); ++it) {
+        data = *it;
+        MPI_Pack(&data, 1, MPI_INT, _buffer, BUFFER_SIZE, &_position, MPI_COMM_WORLD);
+    }
+}
+
+void Tower::deserialize(char* _buffer, int& _position) {
+    // Precte se velikost veze.
+    int size;
+    MPI_Unpack(_buffer, BUFFER_SIZE, &_position, &size, 1, MPI_INT, MPI_COMM_WORLD);
+        
+    // Prectou se tokeny na vezi.
+    int token;   
+    for (int i = 0; i < size; ++i) {
+        MPI_Unpack(_buffer, BUFFER_SIZE, &_position, &token, 1, MPI_INT, MPI_COMM_WORLD);
+        addTop(token);
+    }
 }
 
 ostream& operator<<(ostream& _ostream, const Tower& _tower) {

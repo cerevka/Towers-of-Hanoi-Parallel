@@ -5,8 +5,11 @@
  * Created on November 2, 2011, 10:19 AM
  */
 
+#include <mpi.h>
+
 #include "Board.h"
 #include "Tower.h"
+#include "Solver.h"
 
 Board::Board(void) {
 
@@ -85,6 +88,37 @@ int Board::getLowerBound(int _tower) const {
         if (tower->getToken(tokensCount - i) == i) ++ok;
     }
     return (tower->size() - ok) * 2 + tokensCount - tower->size();
+}
+
+void Board::serialize(char* _buffer, int& _position) const {
+    // Zabali se pocet tokenu na desce.
+    int data = tokensCount;
+    MPI_Pack(&data, 1, MPI_INT, _buffer, BUFFER_SIZE, &_position, MPI_COMM_WORLD);
+    
+    // Zabali se velikost desky (pocet vezi).
+    data = size();
+    MPI_Pack(&data, 1, MPI_INT, _buffer, BUFFER_SIZE, &_position, MPI_COMM_WORLD);
+    
+    // Zabali se vsechny veze na desce.
+    for (vector<Tower>::const_iterator it = towers.begin(); it < towers.end(); ++it) {
+        it->serialize(_buffer, _position);
+    }
+}
+
+void Board::deserialize(char* _buffer, int& _position) {
+    // Precte se pocet tokenu.
+    MPI_Unpack(_buffer, BUFFER_SIZE, &_position, &tokensCount, 1, MPI_INT, MPI_COMM_WORLD);
+    
+    // Precte se velikost desky.
+    int size;
+    MPI_Unpack(_buffer, BUFFER_SIZE, &_position, &size, 1, MPI_INT, MPI_COMM_WORLD);
+    
+    // Deserializuji se veze.
+    for (int i = 0; i < size; ++i) {
+        Tower tower;
+        tower.deserialize(_buffer, _position);
+        towers.push_back(tower); // Kopie.
+    }
 }
 
 ostream& operator<<(ostream& _ostream, const Board& _board) {   

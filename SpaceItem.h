@@ -11,6 +11,8 @@
 #include "Board.h"
 #include "Move.h"
 
+#include <vector>
+
 /**
  * Predstavuje prvek prohledavaneho prostoru.
  * @author Tomáš Čerevka
@@ -25,7 +27,9 @@ public:
      * @param const Move& Posledni tah, ktery desku uvedl do tohoto stavu.
      * @param int Hloubka prohledavaneho prostoru.
      */
-    SpaceItem(const Board&, const Move&, int);
+    SpaceItem(const Board&, const Move&, const int depth);
+    
+    SpaceItem(const Board&, const vector<Move>&);
     
     
     /**
@@ -58,10 +62,8 @@ private:
     /** Aktualni stav desky. */
     const Board board;
     
-    /** Posledni tah, ktery desku uvedl do aktualniho stavu. */
     const Move move;
     
-    /** Hloubka prohledavaneho prostoru. */
     const int depth;
 };
 

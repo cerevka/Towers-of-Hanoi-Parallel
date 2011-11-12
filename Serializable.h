@@ -16,21 +16,28 @@
  */
 class Serializable {
 public:
-    Serializable();
-    Serializable(const Serializable& orig);
-    virtual ~Serializable();
+    
+    Serializable() {
+        
+    }
+    
+    virtual ~Serializable() {
+        
+    }
     
     /**
-     * Vrati serializovany objekt.
-     * @return Pole bytu reprezentujici objekt.
+     * Serializuje objekt.
+     * @param char* Bufferu bytu, do ktereho se serializuje.
+     * @param int& Pozice v bufferu.
      */
-    virtual char* serialize(void) = 0;
+    virtual void serialize(char*, int&) const = 0;
     
     /**
-     * Vrati deserializovany objekt v puvodni podobe.
-     * @return Ukazatel na zrekonstruovany objekt.
+     * Vytvori objekt ze serializovanych dat.
+     * @param char* Bufferu bytu, ze ktereho se deserializuje.
+     * @param int& Pozice v bufferu.
      */
-    virtual Serializable* deserialize(void) = 0;
+    virtual void deserialize(char*, int&) = 0;
     
 private:
 
