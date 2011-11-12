@@ -15,7 +15,12 @@ targetTower(_targetTower), maxDepth(_maxDepth), pushCount(0
 }
 
 Solver::~Solver() {
-
+    while (!space.empty()) {
+        SpaceItem* spaceItem = space.top();
+        delete spaceItem;
+        spaceItem = NULL;
+        space.pop();
+    }
 }
 
 void Solver::solve(vector<Move>& _solution) {
