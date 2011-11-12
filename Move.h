@@ -10,6 +10,8 @@
 
 #include <iostream>
 
+#include "Serializable.h"
+
 using namespace std;
 
 /**
@@ -17,9 +19,9 @@ using namespace std;
  * @author Tomáš Čerevka
  * @author Adam Činčura
  */
-class Move {
+class Move : public Serializable {
 public:
-    
+
     /**
      * Konstruktor.
      */
@@ -56,14 +58,14 @@ public:
     inline int getValue(void) const {
         return this->to;
     }
-    
+
     /**
      * Rozhodne, zda jsou tahy inverzni.
      * @param const Move& Tah, se kterym porovnava.
      * @return TRUE jsou reverzni, jinak FALSE
      */
     bool isReverse(const Move&) const;
-    
+
     /**
      * Vytvori reverzeni tah.
      * @param const Move& Tah, ke kteremu se bude konstruovat inverzni tah.
@@ -72,12 +74,26 @@ public:
     void getReverse(const Move&, Move&) const;
 
     /**
+     * Serializuje tah.
+     * @param char* Buffer.
+     * @param int& Pozice v bufferu.
+     */
+    void serialize(char*, int&) const;
+
+    /**
+     * Deserialuzuje tah.
+     * @param char* Buffer.
+     * @param int& Pozice v bufferu.
+     */
+    void deserialize(char*, int&);
+
+    /**
      * Pretizeny operator pro porovnani dvou tahu.
      * @param Move& Tah, se kterym se porovnava.
      * @return TRUE jsou-li tahy stejne, jinak FALSE.
      */
-    bool operator==(const Move&);    
-    
+    bool operator==(const Move&);
+
     /**
      * Pretizeny operator vypisu do streamu.
      * @param ostream& Vstupni stream.
