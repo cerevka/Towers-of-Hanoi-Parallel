@@ -21,6 +21,11 @@ public:
 
     /**
      * Konstruktor.
+     */
+    SpaceItem();
+    
+    /**
+     * Konstruktor.
      * @param const Board& Aktualni deska.
      * @param const Move& Posledni tah.
      */
@@ -65,11 +70,33 @@ public:
     inline const vector<Move>* getMoves(void) const {
         return &moves;
     }
+    
+    /**
+     * Serializuje objekt.
+     * @param char* Buffer.
+     * @param int& Pozice v bufferu.
+     */
+    void serialize(char*, int&) const;
+    
+    /**
+     * Deserializuje objekt.
+     * @param char* Buffer.
+     * @param int& Pozice v bufferu.
+     */
+    void deserialize(char*, int&);
+    
+    /**
+     * Pretizeny operator pro vypis.
+     * @param ostream& Vstupni stream.
+     * @param SpaceItem& Vypisovany objekt.
+     * @return ostream& Vystupni stream.
+     */
+    friend ostream& operator<<(ostream&, const SpaceItem&);
 
 private:
 
     /** Aktualni stav desky. */
-    const Board board;
+    Board board;
 
     /** Sekvence tahu, ktere vedou k aktualnimu stavu desky. */
     vector<Move> moves;

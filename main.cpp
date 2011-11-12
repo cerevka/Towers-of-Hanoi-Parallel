@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
 
             Solver solver(&board, input.getTargetTower(), input.getMaxDepth());
             vector<Move> solution;
-            solver.solve(solution);
+            //solver.solve(solution);
 
             // Vypise reseni.
             for (vector<Move>::const_iterator it = solution.begin(); it != solution.end(); ++it) {
@@ -44,7 +44,50 @@ int main(int argc, char** argv) {
             }
 
             cout << "Solution has " << solution.size() << " steps." << endl;
+            
+            //=== Testovani serializace ===
+            
+            // Vytvori se sekvence tahu.
+            vector<Move> moves;
+            Move move1(0, 2, 2);
+            Move move2(3, 2, 1);
+            Move move3(3, 0, 7);
+            Move move4(1, 3, 5);
+            moves.push_back(move1);
+            moves.push_back(move2);
+            moves.push_back(move3);
+            moves.push_back(move4);
+            
+            Move move5(2, 3, 1);
+            
+            SpaceItem spaceItem(board, moves, move5);
+            
+            cout << "I will send: " << endl;
+            cout << spaceItem << endl;
+            
+            char buffer[BUFFER_SIZE];
+            int position = 0;
+            spaceItem.serialize(buffer, position);
+            
+            int dest = 1;
+            int tag = 0;
+            MPI_Send(buffer, position, MPI_PACKED, dest, tag, MPI_COMM_WORLD);
+                    
+            
         } else {
+            
+            char buffer[BUFFER_SIZE];
+            SpaceItem spaceItem;
+            MPI_Status status;
+            
+            MPI_Recv(buffer, BUFFER_SIZE, MPI_PACKED, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
+            
+            int position = 0;
+            spaceItem.deserialize(buffer, position);
+            
+            cout << "I received: " << endl;
+            cout << spaceItem << endl;
+            
 
         }
 

@@ -57,15 +57,32 @@ private:
     /** Vychozi deska. */
     const Board* initBoard;
     
+    /** Hloubka nejlepsiho reseni. */
     int bestSolutionDepth;
     
     /** Zasobnik prohledavanych prostoru. */
     vector<SpaceItem*> space;
     
+    /** Aktualni nalezene reseni. */
+    vector<Move> actualSolution;
+    
+    /** Dolni mez reseni. */
+    int lowerBound;
+    
+    /**
+     * Zpracuje vrchol zasobniku.
+     * @param vector<Move>& Nejlepsi reseni.
+     * @param int& Aktualni hloubka.
+     * @return 1 = prerusit cyklus, 0 = pokracovat
+     */
+    char proccessTop(vector<Move>&, int&);
+    
     /**
      * Udela expanzi vrcholu zasobniku.
      */
     void expandTop(void);
+    
+    
 
 };
 
