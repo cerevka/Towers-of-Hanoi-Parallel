@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/SpaceItem.o \
 	${OBJECTDIR}/Input.o \
 	${OBJECTDIR}/Solver.o \
+	${OBJECTDIR}/WorkMessage.o \
 	${OBJECTDIR}/Board.o \
 	${OBJECTDIR}/Move.o
 
@@ -91,6 +92,11 @@ ${OBJECTDIR}/Solver.o: Solver.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Solver.o Solver.cpp
+
+${OBJECTDIR}/WorkMessage.o: WorkMessage.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WorkMessage.o WorkMessage.cpp
 
 ${OBJECTDIR}/Board.o: Board.cpp 
 	${MKDIR} -p ${OBJECTDIR}

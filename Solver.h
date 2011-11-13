@@ -13,8 +13,6 @@
 #include "Board.h"
 #include "SpaceItem.h"
 
-#define BUFFER_SIZE 1024
-
 using namespace std;
 
 /**

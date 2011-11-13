@@ -10,6 +10,7 @@
       <itemPath>Solver.h</itemPath>
       <itemPath>SpaceItem.h</itemPath>
       <itemPath>Tower.h</itemPath>
+      <itemPath>WorkMessage.h</itemPath>
       <itemPath>global.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -25,6 +26,7 @@
       <itemPath>Solver.cpp</itemPath>
       <itemPath>SpaceItem.cpp</itemPath>
       <itemPath>Tower.cpp</itemPath>
+      <itemPath>WorkMessage.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

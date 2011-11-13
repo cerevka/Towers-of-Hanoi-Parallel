@@ -12,6 +12,7 @@
 
 #include "Input.h"
 #include "Solver.h"
+#include "WorkMessage.h"
 
 using namespace std;
 
@@ -61,13 +62,17 @@ int main(int argc, char** argv) {
             Move move5(2, 3, 1);
             
             SpaceItem spaceItem(board, moves, move5);
-            
-            cout << endl << "I will send: " << endl;
-            cout << spaceItem << endl;
+            WorkMessage message;
+            message.addItem(spaceItem);
+            message.addItem(spaceItem);
+            message.addItem(spaceItem);
             
             char buffer[BUFFER_SIZE];
             int position = 0;
-            spaceItem.serialize(buffer, position);
+            message.serialize(buffer, position);
+            
+            cout << endl << "I will send (" << position  << "B): " << endl;
+            cout << message << endl;
             
             int dest = 1;
             int tag = 0;
@@ -77,16 +82,16 @@ int main(int argc, char** argv) {
         } else {
             
             char buffer[BUFFER_SIZE];
-            SpaceItem spaceItem;
+            WorkMessage message;
             MPI_Status status;
             
             MPI_Recv(buffer, BUFFER_SIZE, MPI_PACKED, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
             
             int position = 0;
-            spaceItem.deserialize(buffer, position);
+            message.deserialize(buffer, position);
             
-            cout << "I received: " << endl;
-            cout << spaceItem << endl;
+            cout << "I received (" << position << "B): " << endl;
+            cout << message << endl;
             
 
         }
