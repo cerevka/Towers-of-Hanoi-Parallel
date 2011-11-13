@@ -43,6 +43,11 @@ public:
      */
     void solve(vector<Move>&);
 
+     /**
+     * Inicializuje vnitrni promenne solveru.
+     */
+    void init(void);
+    
 private:
     
     /** Index cilove veze. */
@@ -82,8 +87,24 @@ private:
      */
     void expandTop(void);
     
+   
     
-
+    /**
+     * Odesle token pro distribuovane ukonceni vypoctu.
+     */
+    void sendToken(void);
+    
+    
+    /**
+     * Odesle direktivni message vsem ostatnim procesum.
+     * @param tag odesilane zpravy
+     */
+    void broadcast(int);
+    
+    /**
+     * Zpracuje pripadne prichozi zpravy.
+     */
+    void processMessages(void);
 };
 
 #endif	/* SOLVER_H */

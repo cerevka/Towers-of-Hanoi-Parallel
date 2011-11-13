@@ -65,6 +65,12 @@ public:
      */
     void parseArguments(int, char**);
         
+     
+    /**
+     * Vytiskne sumarizaci vstupu.
+     */
+    void printTask(void) const;
+    
 private:
 
     /** Vytvarena deska. */
@@ -94,11 +100,7 @@ private:
      * Vygeneruje desku dle sveho vnitrniho stavu.
      */
     void generateBoard(void);
-    
-    /**
-     * Vytiskne sumarizaci vstupu.
-     */
-    void printTask(void) const;
+   
     
     /**
      * Vytiskne napovedu.

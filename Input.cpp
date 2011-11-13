@@ -70,7 +70,7 @@ void Input::parseArguments(int _count, char** _args) {
                 throw "Incomplete input!";
             }
         }
-        printTask();
+       // printTask(); //chci aby to vypsal jen master
     }
 }
 
