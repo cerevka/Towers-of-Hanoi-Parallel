@@ -16,6 +16,11 @@ board(_board) {
     moves.push_back(_move);
 }
 
+SpaceItem::SpaceItem(const Board& _board, const vector<Move>& _moves) :
+board(_board), moves(_moves) {
+    
+}
+
 SpaceItem::SpaceItem(const Board& _board, const vector<Move>& _moves, const Move& _move) :
 board(_board), moves(_moves) {
     moves.push_back(_move);

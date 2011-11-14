@@ -23,13 +23,20 @@ public:
      * Konstruktor.
      */
     SpaceItem();
-    
+
     /**
      * Konstruktor.
      * @param const Board& Aktualni deska.
      * @param const Move& Posledni tah.
      */
     SpaceItem(const Board&, const Move&);
+
+    /**
+     * Konstruktor.
+     * @param const Board& Aktualni deska.
+     * @param const vector<Move>& Tahy, ktere predchazely vytvoreni desky.
+     */
+    SpaceItem(const Board&, const vector<Move>&);
 
     /**
      * Konstruktor.
@@ -66,25 +73,25 @@ public:
     inline const Board* getBoard(void) const {
         return &board;
     }
-    
+
     inline const vector<Move>* getMoves(void) const {
         return &moves;
     }
-    
+
     /**
      * Serializuje objekt.
      * @param char* Buffer.
      * @param int& Pozice v bufferu.
      */
     void serialize(char*, int&) const;
-    
+
     /**
      * Deserializuje objekt.
      * @param char* Buffer.
      * @param int& Pozice v bufferu.
      */
     void deserialize(char*, int&);
-    
+
     /**
      * Pretizeny operator pro vypis.
      * @param ostream& Vstupni stream.

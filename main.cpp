@@ -16,6 +16,8 @@
 
 using namespace std;
 
+
+
 /*
  * Vstupni bod programu.
  */

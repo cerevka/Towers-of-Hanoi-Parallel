@@ -105,7 +105,27 @@ private:
      * Zpracuje pripadne prichozi zpravy.
      */
     void processMessages(void);
+    
+    
+    /**
+     * Pozada nahodny proces o poslani prace.
+     */
+    void requestData(void);
+    
+    /**
+     * Rozdeji svou praci mezi prichozi zadosti.
+     */
+    void sendWork(void);
+    
+    
+    /**
+     * Provede prvni distribuci prace. Neceka na zadost o praci
+     * kazdemu procesu rovnou praci prideli.
+     */
+    void firstDistribution(void);
 };
+
+
 
 #endif	/* SOLVER_H */
 
