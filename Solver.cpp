@@ -162,16 +162,16 @@ void Solver::solve(vector<Move>& _solution) {
                 if (finished) {
                     char buffer[BUFFER_SIZE];
                     int position = 0;
-                    cout << "budu serializovat" << endl;
+                   
                     serializeSolution(buffer, position, _solution);
-                    cout << "serializovano" << endl;
+                  
                     char result[BUFFER_SIZE];
-                    cout<<"redukce start:"<<endl;
+                    
                     MPI_Op op;
                     MPI_Op_create((MPI_User_function*) compare, 0, &op);
                     
                     MPI_Reduce(&buffer, &result, BUFFER_SIZE, MPI_PACKED, op, 0, MPI_COMM_WORLD);
-                    cout<<"redukce hotovo"<<endl;
+                   
                     if(myRank==MASTER_RANK){
                         vector<Move> solution;
                         int position = 0;
@@ -181,7 +181,8 @@ void Solver::solve(vector<Move>& _solution) {
                         for (vector<Move>::const_iterator it = solution.begin(); it < solution.end(); ++it) {
                             cout << *it << endl;
                         }
-                        cout << "MASTER - KONEC RESENI";
+                        cout << "Solution depth: " << solution.size() << endl;
+                        cout << "MASTER - KONEC RESENI" << endl;
                     }
                 }
             }
@@ -190,7 +191,7 @@ void Solver::solve(vector<Move>& _solution) {
     }
 
  //   cout << "PushCount process " << myRank << ": " << pushCount << endl;
-    cout << "Solution: " << _solution.size() << " - process " << myRank << endl;
+ //   cout << "Solution: " << _solution.size() << " - process " << myRank << endl;
  //   cout << "mam jeste: " << space.size() << " stavu" << endl;
 }
 
@@ -550,7 +551,8 @@ void Solver::expandTop(void) {
 
             // Delam-li tah tam a zase zpatky, koncim.
             if (move.isReverse(*lastMove) == true) continue;
-
+            
+           //if (lastMove->getTo()==move.getFrom()) continue;
             // Zkopiruji si desku, protoze jsem ji doposud mel jen pro cteni.
             Board myBoard = *actualBoard;
             myBoard.doMove(move);

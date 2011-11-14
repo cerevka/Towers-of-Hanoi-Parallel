@@ -48,14 +48,14 @@ int main(int argc, char** argv) {
             solver.solve(solution);
 
             // Vypise reseni.
-             if (myRank == 0) {
-            for (vector<Move>::const_iterator it = solution.begin(); it != solution.end(); ++it) {
-                cout << *it << endl;
-            }
-
-            cout << "Solution has " << solution.size() << " steps." << endl;
-             }
-//            //=== Testovani serializace ===
+//             if (myRank == 0) {
+//            for (vector<Move>::const_iterator it = solution.begin(); it != solution.end(); ++it) {
+//                cout << *it << endl;
+//            }
+//
+//            cout << "Solution has " << solution.size() << " steps." << endl;
+//             }
+////            //=== Testovani serializace ===
 //            
 //            // Vytvori se sekvence tahu.
 //            vector<Move> moves;
