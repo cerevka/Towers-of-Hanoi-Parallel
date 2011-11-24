@@ -57,7 +57,7 @@ public:
      * @return int Hloubka.
      */
     inline int getDepth(void) const {
-        return moves.size() - 1;
+        return moves.size();
         //return depth;
     }
 

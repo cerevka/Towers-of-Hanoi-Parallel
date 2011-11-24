@@ -115,7 +115,7 @@ private:
     /**
      * Rozdeji svou praci mezi prichozi zadosti.
      */
-    void sendWork(void);
+    void sendWork(int);
     
     
     /**
