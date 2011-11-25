@@ -449,7 +449,7 @@ void Solver::processMessages() {
                 for (int i = 0; i < message.getItems()->size(); ++i) {//tady to muze skripat
                     SpaceItem* spaceItem = new SpaceItem(*(message.getItems()->at(i).getBoard()), *(message.getItems()->at(i).getMoves()));
                     space.push_back(spaceItem);
-                    actualDepth=spaceItem->getDepth()-1;
+                    actualDepth=spaceItem->getDepth();
                 }
                 requestWork = true;
                 break;
