@@ -1,0 +1,230 @@
+\documentclass[12pt]{article}
+\usepackage{epsf,epic,eepic,eepicemu}
+%\documentstyle[epsf,epic,eepic,eepicemu]{article}
+\usepackage[cp1250]{inputenc}
+
+\begin{document}
+%\oddsidemargin=-5mm \evensidemargin=-5mm \marginparwidth=.08in
+%\marginparsep=.01in \marginparpush=5pt \topmargin=-15mm
+%\headheight=12pt \headsep=25pt \footheight=12pt \footskip=30pt
+%\textheight=25cm \textwidth=17cm \columnsep=2mm \columnseprule=1pt
+%\parindent=15pt\parskip=2pt
+
+\begin{center}
+\bf Semestralní projekt MI-PAR 2011/2012:\\[5mm]
+    Paralelní algoritmus pro øešení problému\\[5mm]
+       Tomáš Èerevka\\
+       Adam Èinèura\\[2mm]
+magisterské studijum, FIT ÈVUT, Kolejní 550/2, 160 00 Praha 6\\[2mm]
+\today
+\end{center}
+
+\section{Definice problému}
+Úloha ZHV: Zobecnìné Hanojské Vìže
+
+\subsection{Vstupní data}
+n = pøirozené èíslo pøedstavující celkový poèet žetonù,$n \geq 16$ . 
+
+Žeton $i, i=1,...,n,$  má prùmìr \textit{i}.
+
+s = pøirozené èíslo pøedstavující poèet tyèek,$n \div 4 \geq s > 3$ 
+
+r = èíslo cílové tyèky,$1 \leq r \leq s$ 
+
+$V[1,..,s] =$ množina neúplných hanoiských vìží.
+
+\subsection{Definice}
+Hanojská vìž o výšce \textit{k} je vìž \textit{k} rùzných žetonù, které jsou uspoøádány od nejmenšího k nejvìtšímu a rozdíly ve velikostech sousedních žetonù jsou vždy 1. Neuplná hanojská vìž o výšce \textit{k} je vìž \textit{k} rùzných žetonù, které jsou uspoøádány od nejmenších k nejvìtším a rozdíly ve velikostech alespoò 1 dvojice sousedních žetonù je alespoò 2.
+
+Napøíklad pro k=5 je to neúplná vìž 2,3,7,8,10.
+
+\subsection{Generování poèáteèního stavu}
+V poøadí prùmìrù žetonù $n,n-1,..,1$ se žetony náhodnì rozhazují na \textit{s} tyèek, takže vznikne \textit{s} obecnì neúplných hanojských vìží. 
+
+\subsection{Pravidla}
+Jeden tah je pøesun žetonu z vrcholu jedné vìže na jedné tyèce na jinou prázdnou tyèku nebo na vrchol vìže zaèínající žetonem s vìtším prùmìrem. 
+
+\subsection{Úkol}
+Na zadané tyèce \textit{r} postavte úplnou hanojskou vìž o výšce \textit{n} pomoci minimálního poètu tahù. 
+ 
+\subsection{Výstup algoritmu} 
+Výpis poètu tahù a jejich posloupností v nasledujícím formátu: žeton, pùvodni tyèka $\rightarrow$ cílová tyèka.  
+
+\subsection{Sekvenèní algoritmus} 
+Øešení musí existovat. Sekvenèní algoritmus je typu BB-DFS s neomezenou hloubkou prohledávání (obecnì se mohou pro $s > 3$ pøi prohledávání generovat cykly). Hloubku prohledávání musíme omezit horní mez (viz dále). Ve stavu, kdy nelze pøesunout žádný žeton, se provede návrat. Cena, kterou minimalizujeme, je poèet tahù. Algoritmus konèí, když je poèet tahù roven dolní mezi, jinak prohledává celý stavový prostor do hloubky dané horní mezí. 
+
+Tìsnou dolní mez poètu tahù lze urèit takto: je-li žeton na cílové tyèce, ale není na správné pozici, pak musí provést aspoò 2 tahy. Je-li žeton na jiné než cílové tyèce, pak musí provést aspoò 1 tah. Dolní mez je souèet tìchto minimálních poètù tahù pro všechny žetony. Tato dolni mez je dosažitelná pro dostateènì velká \textit{s}. 
+
+\section{Popis sekvenèního algoritmu}
+Program pro sekvenèní algoritmus je napsán objektovým pøístupem. Hrací deska, vìž, tah tokenem a objekt ukládaný na zásobník jsou reprezentovány každý svou tøídou. Veškerý výkonový kód algoritmu je obsažen ve tøídì Solver. Implementaci vlastního zásobníku jsem neprovádìli, použili jsme standardní implementaci z knihovny stl.
+
+Algoritmus zaèíná naètením vstupních dat, pøipravením výchozího stavu a jeho uložením na zásobník. Poté algoritmus prohledává stavový prostor až do hloubky horní meze specifikované v zadání. Pokud algoritmus nalezne øešení, zmenší hloubku prohledávaného prostoru na hloubku nalezeného øešení - ve vìtší hloubce není možné nalézt lepší øešení. V pøípadì, kdy algoritmus nalezne další øešení, lepší (v menší hloubce) než pùvodní øešení, zmenší opìt hloubku prohledávání na hloubku lepšího øešení.
+
+Pøi provádìní expanze zásobníku algoritmus kontroluje zda by provedením tahu nevznikl cyklus délky 1 (tah tokenem tam a zpátky). Pokud cyklus vznikl, pak pøíslušný stav není na zásobník uložen. Dále je pøi expanzi zásobníku kontrolováno zda nový stav mùže vést k øešení pomocí tìsné dolní meze. Pokud nemùže vést k øešení, také není na zásobník uložen. Bìh algoritmu je pøedèasnì ukonèen pokud je nalezeno øešení v hloubce rovné dolní mezi.
+
+Algoritmus naèítá zadání ze souboru. Název souboru je programu specifikován jako parametr pøíkazové øádky -f. Pøíklad spuštìní programu, kdy je zadání specifikováno v souboru input1.txt, je následující:\begin{center}
+
+compiledFile -f/path/to/input1.txt 
+\end{center} 
+Formát vstupního souboru je následující:
+\begin{flushleft}
+4 0 22
+
+8 2
+
+6 5
+
+4 3
+
+7 1
+\end{flushleft}
+Význam souboru je následující: 4 vìže, cílová vìž je 0. v poøadí, maximální hloubka prohledávání je 22, následují øádky pro jednotlivé vìže, každá vìž je specifikována hodnotami svých tokenù v sestupném poøadí dle velikosti.
+
+Výstupem algoritmu je posloupnost tahù, které postaví na požadované pozici kompletní hanojskou vìž ve formátu:
+\begin{flushleft}
+$[2, 0 \rightarrow 2]$
+
+$[1, 3 \rightarrow 2]$
+
+$[7, 3 \rightarrow 0]$
+
+$[5, 1 \rightarrow 3]$
+
+$[1, 2 \rightarrow 3]$
+
+$[6, 1 \rightarrow 0]$
+
+$[2, 2 \rightarrow 1]$
+
+$[1, 3 \rightarrow 1]$
+
+$[5, 3 \rightarrow 0]$
+
+$[3, 2 \rightarrow 3]$
+
+$[4, 2 \rightarrow 0]$
+
+$[3, 3 \rightarrow 0]$
+
+$[1, 1 \rightarrow 3]$
+
+$[2, 1 \rightarrow 0]$
+
+$[1, 3 \rightarrow 0]$
+
+Solution depth: 15
+\end{flushleft}
+
+První èíslo udává hodnotu tokenu, kterým je tah provádìn. Zbylá dvì èísla udávají index vìže, z které byl token odebrán(pøed šipkou) a index vìže, na kterou je token umístìn(za šipkou). Zde je naše jediná odchylka od zadání - èíslujeme vìže od 0 namísto od jednièky. Stejné èíslování používáme i pøi naèítání dat.
+\subsection{Doba bìhu sekvenèního algoritmu}
+ 
+ \begin{table}[!h]
+ \begin{center}
+    \begin{tabular}{ | l | l |}    
+    \hline
+    Prohledávaná hloubka & Doba bìhu[s]  \\ \hline
+    18 & 48  \\ \hline
+    19 & 70 \\ \hline
+    20 & 146 \\ \hline
+    21 & 429  \\ \hline
+    22 & 649 \\ \hline
+    \end{tabular}
+     \caption{Doba bìhu pøi úplném prohledání stavového prostoru}
+    \end{center}
+     \end{table}
+
+\section{Popis paralelního algoritmu a jeho implementace v MPI}
+Paralelní algoritmus je typu L-PBB-DFS-D, vznikl paralelizací sekvenèního algoritmu, proto jsou metody pro expanzi zásobníku a vyhodnocení stavu na vrcholu zásobníku stejné.
+
+Po spuštìní algoritmu proces MASTER(id=0) naète zadání, provede nìkolik expanzí zásobníku a poté pošle všem ostatním procesùm jejich díl práce. Po pøijetí pøidìlené práce všechny procesy provádìjí sekvenèní prohledávání stavového prostoru(každý své èásti).
+
+Každý proces mùže být ve stavu aktivní(neprázdný zásobník), nebo neaktivní(prázdný zásobník). 
+
+Aktivní proces provádí výpoèet a každou 150. expanzi zkontroluje pøíchozí zprávy. Jak èasto provádìt kontrolu zpráv je nastaveno konstantou a je možné libovolnì mìnit. Pokud má proces ve frontì nìjaké pøíchozí zprávy, provádí jejich zpracování dokud není fronta prázdná. Pokud proces bìhem výpoètu vyprázdní zásobník, pøejde do stavu neaktivní. 
+
+Neaktivní proces vybere dárce a tomu pošle žádost o práci, pokud má u sebe peška, pošle ho následujícímu procesu ve smìru virtuální hamiltonovské kružnici. Poté pouze obsluhuje pøípadné pøíchozí zprávy. Pøi pøíchodu kladné zprávy od dárce uloží poslanou práci na zásobník a pøechází do stavu aktivní, pøi záporné odpovìdi dárce vygeneruje nového dárce a žádost o práci opakuje.
+
+Pro spuštìní algoritmu lze použít stejný pøíkaz jako pro spuštìní sekvenèní verze.
+
+\subsection{Algoritmus hledání dárce}
+Pro hledání dárce jsme zvolili algoritmus Náhodné výzvy (NV-AHD). Tento algoritmus pokaždé, když se proces stane neèinným vygeneruje náhodnì index dárce z množiny $\lbrace0,..., (p-1) \rbrace - \lbrace i \rbrace$, kde \textit{p} je poèet procesù a \textit{i} je index žádajícího procesu.
+
+\subsection{Algoritmus dìlení zásobníku}
+Zvolili jsme dìlení zásobníku u dna. U naší úlohy se dá pøedpokládat, že stavy u dna zásobníku pod sebou skrývají více práce než stavy výše v zásobníku.
+
+\subsection{Algoritmus pro distribuované ukonèení výpoètu}
+Použili jsme modifikovaný Dijkstrùv peškový algoritmus. Tento algoritmus je vhodný pøi používání dynamického vyvažování zátìže.
+
+
+\section{Namìøené výsledky a vyhodnocení}
+
+\begin{enumerate}
+\item Zvolte tøi instance problému s takovou velikostí vstupních dat, pro které má
+sekvenèní algoritmus èasovou složitost kolem 5, 10 a 15 minut. Pro
+meøení èas potøebný na ètení dat z disku a uložení na disk
+neuvažujte a zakomentujte ladící tisky, logy, zprávy a výstupy.
+\item Mìøte paralelní èas pøi použití $i=2,\cdot,32$ procesorù na sítích Ethernet a InfiniBand.
+%\item Pri mereni kazde instance problemu na dany pocet procesoru spoctete pro vas algoritmus dynamicke delby prace celkovy pocet odeslanych zadosti o praci, prumer na 1 procesor a jejich uspesnost.
+%\item Mereni pro dany pocet procesoru a instanci problemu provedte 3x a pouzijte prumerne hodnoty.
+\item Z namìøených dat sestavte grafy zrychlení $S(n,p)$. Zjistìte, zda a za jakych podmínek
+došlo k superlineárnímu zrychlení a pokuste se je zdùvodnit.
+\item Vyhodnoïte komunikaèní složitost dynamického vyvažování zátìže a posuïte
+vhodnost vámi implementovaného algoritmu pro hledání dárce a dìlení
+zásobníku pri øešení vašeho problému. Posuïte efektivnost a
+škálovatelnost algoritmu. Popište nedostatky vaší implementace a
+navrhnìte zlepšení.
+\item Empiricky stanovte
+granularitu vaší implementace, tj., stupeò paralelismu pro danou
+velikost øešeného problému. Stanovte kritéria pro stanovení mezí, za
+kterými již není uèinné rozkládat výpoèet na menší procesy, protože
+by komunikaèní náklady prevážily urychlení paralelním výpoètem.
+
+\end{enumerate}
+
+\section{Závìr}
+
+Celkové zhodnocení semestrální práce a zkušenosti získaných bìhem
+semestru.
+
+\section{Literatura}
+
+\appendix
+
+\section{Návod pro vkládání grafù a obrázkù do Latexu}
+
+Nejjednodušší zpùsob vytvoøení obrázku je použít vektorový grafický
+editor (napø. xfig nebo jfig), ze kterého lze exportovat buï
+\begin{itemize}
+\item postscript formáty (ps nebo eps formát) nebo
+\item latex formáty (v poøadí prostý latex, latex s macry epic, eepic, eepicemu). Uvedené poøadí odpovídá rùstu
+komplikovanosti obrázkù který formát podporuje (prostá latex macra
+umožnují pouze jednoduché, epic makra nìco mezi, je tøeba
+vyzkoušet).
+
+\end{itemize}
+Následující pøíklady platí pro všechny pøípady.
+
+Obrázek v postscriptu, vycentrovaný a na celou šíøku stránky, s
+popisem a èíslem. Všimnete si, jak øídit velikost obrazku.
+
+
+Latexovské obrázky maji pøípony *.latex, *.epic, *.eepic, a
+*.eepicemu, respective.
+
+Vypuštením závorek {\tt figure} dostanete opìt pouze rámeèek v textu
+bez èísla a popisu.
+
+Takhle jednoduše mùžete poskládat obrázky vedle sebe.
+
+Øídit velikost latexovskych obrázkù lze pøíkazem
+\begin{verbatim}
+\setlength{\unitlength}{0.1mm}
+\end{verbatim}
+které mìní mìøítko rastru obrázku, Tyto pøíkazy je ale souèasnì
+nutné vyhodit ze souboru, který xfig vygeneroval.
+
+Pro vytváøení grafu lze použít program gnuplot, který umí generovat
+postscriptovy soubor, ktery vložíte do Latexu výše uvedeným
+zpùsobem.
+
+\end{document}

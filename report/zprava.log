@@ -1,0 +1,171 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.10.18)  26 NOV 2011 21:45
+entering extended mode
+ %&-line parsing enabled.
+**zprava.tex
+(./zprava.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf-texlive/tex/generic/epsf/epsf.sty
+This is `epsf.tex' v2.7.3 <23 July 2005>
+\epsffilein=\read1
+\epsfframemargin=\dimen103
+\epsfframethickness=\dimen104
+\epsfrsize=\dimen105
+\epsftmp=\dimen106
+\epsftsize=\dimen107
+\epsfxsize=\dimen108
+\epsfysize=\dimen109
+\pspoints=\dimen110
+) (/usr/share/texmf-texlive/tex/latex/eepic/epic.sty
+Enhancements to Picture Environment. Version 1.2 - Released June 1, 1986
+\@@multicnt=\count87
+\d@lta=\count88
+\@delta=\dimen111
+\@@delta=\dimen112
+\@gridcnt=\count89
+\@joinkind=\count90
+\@dotgap=\dimen113
+\@ddotgap=\dimen114
+\@x@diff=\count91
+\@y@diff=\count92
+\x@diff=\dimen115
+\y@diff=\dimen116
+\@dotbox=\box26
+\num@segments=\count93
+\num@segmentsi=\count94
+\@datafile=\read2
+) (/usr/share/texmf-texlive/tex/latex/eepic/eepic.sty
+Extension to Epic and LaTeX. Version 1.1e - Released Dec 21, 1999
+\@gphlinewidth=\count95
+\@eepictcnt=\count96
+\@tempdimc=\dimen117
+\maxovaldiam=\dimen118
+\@filltype=\box27
+) (/usr/share/texmf-texlive/tex/latex/eepic/eepicemu.sty
+Emulation of EEPIC using EPIC. Version 1.1a - Released Febrary 1, 1988
+\@spxcnt=\count97
+\@spycnt=\count98
+\@ispxcnt=\count99
+\@ispycnt=\count100
+\@cmidxcnt=\count101
+\@cmidycnt=\count102
+\maxovaldiam=\dimen119
+) (/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/share/texmf-texlive/tex/latex/base/cp1250.def
+File: cp1250.def 2008/03/30 v1.1d Input encoding file
+)) (./zprava.aux)
+\openout1 = `zprava.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 26.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 26.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 26.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (12.9822pt too wide) in paragraph at lines 48--49
+\OT1/cmr/m/n/12 Na zadan^^Se ty^^Tcce \OT1/cmr/m/it/12 r \OT1/cmr/m/n/12 postav
+te ^^Suplnou hano-jskou v^^Te^^Tz o v^^Sy^^Tsce \OT1/cmr/m/it/12 n \OT1/cmr/m/n
+/12 po-moci minim^^Saln^^S^^Pho
+ []
+
+
+Overfull \hbox (3.81258pt too wide) in paragraph at lines 51--52
+\OT1/cmr/m/n/12 V^^Sypis po^^Tctu tah^^Wu a je-jich posloup-nost^^S^^P v nasle-
+duj^^S^^Pc^^S^^Pm form^^Satu: ^^Tzeton, p^^Wuvodni
+ []
+
+
+Overfull \hbox (1.85843pt too wide) in paragraph at lines 61--62
+\OT1/cmr/m/n/12 ^^Tre^^Tsen^^S^^P, zmen^^Ts^^S^^P hloubku prohled^^Savan^^Seho 
+pros-toru na hloubku nalezen^^Seho ^^Tre^^Tsen^^S^^P
+ []
+
+[2] [3]
+Overfull \hbox (10.7542pt too wide) in paragraph at lines 139--140
+[]\OT1/cmr/m/n/12 Po spu^^Tst^^Ten^^S^^P al-go-ritmu pro-ces MAS-TER(id=0) na^^
+Tcte zad^^San^^S^^P, provede n^^Tekolik
+ []
+
+[4]
+Overfull \hbox (1.28853pt too wide) in paragraph at lines 143--144
+[]\OT1/cmr/m/n/12 Aktivn^^S^^P pro-ces prov^^Sad^^S^^P v^^Sypo^^Tcet a ka^^Tzdo
+u 150. ex-panzi zkon-troluje p^^Tr^^S^^Pchoz^^S^^P
+ []
+
+[5]
+Overfull \hbox (1.00983pt too wide) in paragraph at lines 176--181
+\OT1/cmr/m/n/12 pro-cesy, proto^^Tze by ko-mu-nika^^Tcn^^S^^P n^^Saklady prev^^
+Sa^^Tzily urychlen^^S^^P par-aleln^^S^^Pm
+ []
+
+
+Overfull \hbox (2.11954pt too wide) in paragraph at lines 186--188
+\OT1/cmr/m/n/12 Celkov^^Se zhod-no-cen^^S^^P semestr^^Saln^^S^^P pr^^Sace a zku
+^^Tsenosti z^^S^^Pskan^^Sych b^^Tehem semestru. 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 198.
+
+(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 198.
+ [6] [7] (./zprava.aux) ) 
+Here is how much of TeX's memory you used:
+ 523 strings out of 495061
+ 6209 string characters out of 1182620
+ 58425 words of memory out of 3000000
+ 3750 multiletter control sequences out of 15000+50000
+ 8410 words of font info for 30 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 22i,8n,19p,517b,231s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.p
+fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on zprava.pdf (7 pages, 89650 bytes).
+PDF statistics:
+ 50 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
