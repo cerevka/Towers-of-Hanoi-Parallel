@@ -24,6 +24,12 @@ using namespace std;
 int main(int argc, char** argv) {
     try {
         MPI_Init(&argc, &argv);
+	
+	// Mereni casu.
+	double start, stop;
+	MPI_Barrier(MPI_COMM_WORLD);
+	start = MPI_Wtime();
+
         int myRank;
         MPI_Comm_rank(MPI_COMM_WORLD, &myRank);
         int processesCount;
@@ -102,7 +108,11 @@ int main(int argc, char** argv) {
 //            cout << "I received (" << position << "B): " << endl;
 //            cout << message << endl;
 //            
-
+	MPI_Barrier(MPI_COMM_WORLD);
+	stop = MPI_Wtime();
+	if (myRank == 0) {
+		cout << "Execution time: " << (stop - start) << endl;
+	}
        
 
         MPI_Finalize();
