@@ -36,6 +36,8 @@ bool firstWorkDistribution;
 int actualDepth = 1;
 int dolniMez;
 int numberOfProcesses;
+int workRequestsInt=0;
+int failedWorkRequests=0;
 MPI_Request lastRequest;
 MPI_Status status;
 vector<int> *workRequests = new vector<int>();
@@ -174,7 +176,10 @@ void Solver::solve(vector<Move>& _solution) {
                     MPI_Op_create((MPI_User_function*) compare, 0, &op);
                     cout<<_solution.size()<<endl;
                     MPI_Reduce(&buffer, &result, BUFFER_SIZE, MPI_PACKED, op, 0, MPI_COMM_WORLD);
-
+                    int workRequestsRes;
+                    MPI_Reduce (&workRequestsInt, &workRequestsRes, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+                    int failedWorkRequestsRes;
+                    MPI_Reduce (&failedWorkRequests, &failedWorkRequestsRes, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
                     if (myRank == MASTER_RANK) {
                         vector<Move> solution;
                         int position = 0;
@@ -185,6 +190,9 @@ void Solver::solve(vector<Move>& _solution) {
                             cout << *it << endl;
                         }
                         cout << "Solution depth: " << solution.size() << endl;
+                        cout<< "Work Requests: "<<workRequestsRes<<endl;
+                        cout<<"Denied Work Requests: "<<failedWorkRequestsRes<<endl;
+                        
                         cout << "MASTER - KONEC RESENI" << endl;
                     }
                 }
@@ -201,6 +209,7 @@ void Solver::solve(vector<Move>& _solution) {
 void Solver::requestData() {
     if (requestWork) {
         requestWork = false;
+        ++workRequestsInt;
         int dest = rand() % numberOfProcesses; //nahodne vygeneruju koho pozadam o praci
 
         while (dest == myRank) {//neposilam zadost sam sobe
@@ -434,6 +443,7 @@ void Solver::processMessages() {
                 MPI_Recv(&foo, 1, MPI_INT, status.MPI_SOURCE, status.MPI_TAG, MPI_COMM_WORLD, &status2);
                 requestWork = true; //nastavim ze budu zadat znovu
                 //  cout << "proces: " << status.MPI_SOURCE << "mi NEposlal praci." << endl;
+                ++failedWorkRequests;
                 break;
             }
 
