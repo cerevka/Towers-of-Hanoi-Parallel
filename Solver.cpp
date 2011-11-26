@@ -174,7 +174,7 @@ void Solver::solve(vector<Move>& _solution) {
 
                     MPI_Op op;
                     MPI_Op_create((MPI_User_function*) compare, 0, &op);
-                    cout<<_solution.size()<<endl;
+                  //  cout<<_solution.size()<<endl;
                     MPI_Reduce(&buffer, &result, BUFFER_SIZE, MPI_PACKED, op, 0, MPI_COMM_WORLD);
                     int workRequestsRes;
                     MPI_Reduce (&workRequestsInt, &workRequestsRes, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
