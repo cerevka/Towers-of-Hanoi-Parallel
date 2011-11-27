@@ -11,7 +11,7 @@
 %\parindent=15pt\parskip=2pt
 
 \begin{center}
-\bf Semestralní projekt MI-PAR 2011/2012:\\[5mm]
+\bf Semestrální projekt MI-PAR 2011/2012:\\[5mm]
     Paralelní algoritmus pro øešení problému\\[5mm]
        Tomáš Èerevka\\
        Adam Èinèura\\[2mm]
@@ -31,10 +31,10 @@ s = pøirozené èíslo pøedstavující poèet tyèek,$n \div 4 \geq s > 3$
 
 r = èíslo cílové tyèky,$1 \leq r \leq s$ 
 
-$V[1,..,s] =$ množina neúplných hanoiských vìží.
+$V[1,..,s] =$ množina neúplných hanojských vìží.
 
 \subsection{Definice}
-Hanojská vìž o výšce \textit{k} je vìž \textit{k} rùzných žetonù, které jsou uspoøádány od nejmenšího k nejvìtšímu a rozdíly ve velikostech sousedních žetonù jsou vždy 1. Neuplná hanojská vìž o výšce \textit{k} je vìž \textit{k} rùzných žetonù, které jsou uspoøádány od nejmenších k nejvìtším a rozdíly ve velikostech alespoò 1 dvojice sousedních žetonù je alespoò 2.
+Hanojská vìž o výšce \textit{k} je vìž \textit{k} rùzných žetonù, které jsou uspoøádány od nejmenšího k nejvìtšímu a rozdíly ve velikostech sousedních žetonù jsou vždy 1. Neúplná hanojská vìž o výšce \textit{k} je vìž \textit{k} rùzných žetonù, které jsou uspoøádány od nejmenších k nejvìtším a rozdíly ve velikostech alespoò 1 dvojice sousedních žetonù je alespoò 2.
 
 Napøíklad pro k=5 je to neúplná vìž 2,3,7,8,10.
 
@@ -48,12 +48,12 @@ Jeden tah je pøesun žetonu z vrcholu jedné vìže na jedné tyèce na jinou prázdnou
 Na zadané tyèce \textit{r} postavte úplnou hanojskou vìž o výšce \textit{n} pomoci minimálního poètu tahù. 
  
 \subsection{Výstup algoritmu} 
-Výpis poètu tahù a jejich posloupností v nasledujícím formátu: žeton, pùvodni tyèka $\rightarrow$ cílová tyèka.  
+Výpis poètu tahù a jejich posloupností v následujícím formátu: žeton, pùvodní tyèka $\rightarrow$ cílová tyèka.  
 
 \subsection{Sekvenèní algoritmus} 
 Øešení musí existovat. Sekvenèní algoritmus je typu BB-DFS s neomezenou hloubkou prohledávání (obecnì se mohou pro $s > 3$ pøi prohledávání generovat cykly). Hloubku prohledávání musíme omezit horní mez (viz dále). Ve stavu, kdy nelze pøesunout žádný žeton, se provede návrat. Cena, kterou minimalizujeme, je poèet tahù. Algoritmus konèí, když je poèet tahù roven dolní mezi, jinak prohledává celý stavový prostor do hloubky dané horní mezí. 
 
-Tìsnou dolní mez poètu tahù lze urèit takto: je-li žeton na cílové tyèce, ale není na správné pozici, pak musí provést aspoò 2 tahy. Je-li žeton na jiné než cílové tyèce, pak musí provést aspoò 1 tah. Dolní mez je souèet tìchto minimálních poètù tahù pro všechny žetony. Tato dolni mez je dosažitelná pro dostateènì velká \textit{s}. 
+Tìsnou dolní mez poètu tahù lze urèit takto: je-li žeton na cílové tyèce, ale není na správné pozici, pak musí provést aspoò 2 tahy. Je-li žeton na jiné než cílové tyèce, pak musí provést aspoò 1 tah. Dolní mez je souèet tìchto minimálních poètù tahù pro všechny žetony. Tato dolní mez je dosažitelná pro dostateènì velká \textit{s}. 
 
 \section{Popis sekvenèního algoritmu}
 Program pro sekvenèní algoritmus je napsán objektovým pøístupem. Hrací deska, vìž, tah tokenem a objekt ukládaný na zásobník jsou reprezentovány každý svou tøídou. Veškerý výkonový kód algoritmu je obsažen ve tøídì Solver. Implementaci vlastního zásobníku jsem neprovádìli, použili jsme standardní implementaci z knihovny STL.
@@ -250,6 +250,10 @@ semestru.
 
 \section{Literatura}
 
+\begin{itemize}
+\item Prof. Ing. Pavel Tvrdík, CSc., Paralelní systémy a algoritmy, ÈVUT, Praha 2006
+\item Doc. Jiroušek Radim, DrSc., Metody reprezentace a zpracování znalostí v umìlé inteligenci, VŠE, Praha 1995
+\end{itemize}
 \appendix
 
 

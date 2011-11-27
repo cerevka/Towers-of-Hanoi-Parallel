@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.10.18)  27 NOV 2011 16:47
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.10.18)  27 NOV 2011 22:11
 entering extended mode
  %&-line parsing enabled.
 **zprava.tex
@@ -146,8 +146,8 @@ te ^^Suplnou hano-jskou v^^Te^^Tz o v^^Sy^^Tsce \OT1/cmr/m/it/12 n \OT1/cmr/m/n
 
 
 Overfull \hbox (3.81258pt too wide) in paragraph at lines 51--52
-\OT1/cmr/m/n/12 V^^Sypis po^^Tctu tah^^Wu a je-jich posloup-nost^^S^^P v nasle-
-duj^^S^^Pc^^S^^Pm form^^Satu: ^^Tzeton, p^^Wuvodni
+\OT1/cmr/m/n/12 V^^Sypis po^^Tctu tah^^Wu a je-jich posloup-nost^^S^^P v n^^Sas
+leduj^^S^^Pc^^S^^Pm form^^Satu: ^^Tzeton, p^^Wuvodn^^S^^P
  []
 
 
@@ -233,7 +233,13 @@ Overfull \hbox (2.11954pt too wide) in paragraph at lines 248--250
 ^^Tsenosti z^^S^^Pskan^^Sych b^^Tehem semestru. 
  []
 
-[11 <./acceleration.png (PNG copy)>] (./zprava.aux) ) 
+[11 <./acceleration.png (PNG copy)>]
+Overfull \hbox (1.21495pt too wide) in paragraph at lines 255--256
+[]\OT1/cmr/m/n/12 Doc. Jirou^^Tsek Radim, DrSc., Metody reprezen-tace a zpra-co
+v^^San^^S^^P znalost^^S^^P
+ []
+
+[12] (./zprava.aux) ) 
 Here is how much of TeX's memory you used:
  1233 strings out of 495061
  15687 string characters out of 1182620
@@ -242,16 +248,16 @@ Here is how much of TeX's memory you used:
  8241 words of font info for 29 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  25i,8n,19p,522b,242s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/
-fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1
-/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
-fonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmm
-i8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on zprava.pdf (11 pages, 274799 bytes).
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
+mbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/t
+exmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmti12.pfb>
+Output written on zprava.pdf (12 pages, 276884 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
+ 79 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
