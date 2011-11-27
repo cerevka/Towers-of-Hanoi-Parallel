@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.10.18)  26 NOV 2011 21:45
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.10.18)  27 NOV 2011 16:47
 entering extended mode
  %&-line parsing enabled.
 **zprava.tex
@@ -75,7 +75,32 @@ Package: inputenc 2008/03/30 v1.1d Input encoding file
 
 (/usr/share/texmf-texlive/tex/latex/base/cp1250.def
 File: cp1250.def 2008/03/30 v1.1d Input encoding file
-)) (./zprava.aux)
+))
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count103
+))
+\Gin@req@height=\dimen120
+\Gin@req@width=\dimen121
+) (./zprava.aux)
 \openout1 = `zprava.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
@@ -90,6 +115,20 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
+
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count104
+\scratchdimen=\dimen122
+\scratchbox=\box28
+\nofMPsegments=\count105
+\nofMParguments=\count106
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count107
+\MPscratchDim=\dimen123
+\MPnumerator=\count108
+\everyMPtoPDFconversion=\toks18
+)
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -117,55 +156,102 @@ Overfull \hbox (1.85843pt too wide) in paragraph at lines 61--62
 pros-toru na hloubku nalezen^^Seho ^^Tre^^Tsen^^S^^P
  []
 
-[2] [3]
+[2] [3] [4]
 Overfull \hbox (10.7542pt too wide) in paragraph at lines 139--140
 []\OT1/cmr/m/n/12 Po spu^^Tst^^Ten^^S^^P al-go-ritmu pro-ces MAS-TER(id=0) na^^
 Tcte zad^^San^^S^^P, provede n^^Tekolik
  []
 
-[4]
+
 Overfull \hbox (1.28853pt too wide) in paragraph at lines 143--144
 []\OT1/cmr/m/n/12 Aktivn^^S^^P pro-ces prov^^Sad^^S^^P v^^Sypo^^Tcet a ka^^Tzdo
 u 150. ex-panzi zkon-troluje p^^Tr^^S^^Pchoz^^S^^P
  []
 
 [5]
-Overfull \hbox (1.00983pt too wide) in paragraph at lines 176--181
-\OT1/cmr/m/n/12 pro-cesy, proto^^Tze by ko-mu-nika^^Tcn^^S^^P n^^Saklady prev^^
-Sa^^Tzily urychlen^^S^^P par-aleln^^S^^Pm
+Overfull \hbox (8.35143pt too wide) in paragraph at lines 161--161
+[]\OT1/cmr/m/n/12 Pro par-aleln^^S^^P v^^Sypo^^Tcet jsme se pokou^^Tseli rozd^^
+Telit stavov^^Sy pros-tor rovnom^^Tern^^Te
  []
 
 
-Overfull \hbox (2.11954pt too wide) in paragraph at lines 186--188
-\OT1/cmr/m/n/12 Celkov^^Se zhod-no-cen^^S^^P semestr^^Saln^^S^^P pr^^Sace a zku
-^^Tsenosti z^^S^^Pskan^^Sych b^^Tehem semestru. 
+Overfull \hbox (4.36952pt too wide) in paragraph at lines 169--170
+[]\OT1/cmr/m/n/12 Pro n^^Sa^^Ts al-go-rit-mus jsme stanovili hranici, za kterou
+ u^^Tz se nevy-plat^^S^^P v^^Sypo^^Tcet
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 198.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 178.
 
 (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 198.
- [6] [7] (./zprava.aux) ) 
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 178.
+ [6]
+<Table1.png, id=27, 662.475pt x 185.69376pt>
+File: Table1.png Graphic file (type png)
+ <use Table1.png>
+Overfull \hbox (57.62643pt too wide) in paragraph at lines 185--186
+ [] 
+ []
+
+<Table2.png, id=29, 662.475pt x 180.675pt>
+File: Table2.png Graphic file (type png)
+ <use Table2.png>
+Overfull \hbox (70.05994pt too wide) in paragraph at lines 192--193
+ [] 
+ []
+
+<infinibandTime.png, id=30, 602.25pt x 372.39125pt>
+File: infinibandTime.png Graphic file (type png)
+ <use infinibandTime.png>
+<ethernetTime.png, id=31, 602.25pt x 372.39125pt>
+File: ethernetTime.png Graphic file (type png)
+ <use ethernetTime.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7 <./Table1.png>] [8 <./Table2.png> <./infinibandTime.png (PNG copy)>]
+<infinibandRequests.png, id=41, 602.25pt x 372.39125pt>
+File: infinibandRequests.png Graphic file (type png)
+
+<use infinibandRequests.png>
+<ethernetRequests.png, id=42, 602.25pt x 372.39125pt>
+File: ethernetRequests.png Graphic file (type png)
+
+<use ethernetRequests.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[9 <./ethernetTime.png (PNG copy)>] [10 <./infinibandRequests.png (PNG copy)> <
+./ethernetRequests.png (PNG copy)>]
+<acceleration.png, id=49, 602.25pt x 372.39125pt>
+File: acceleration.png Graphic file (type png)
+ <use acceleration.png>
+Overfull \hbox (2.11954pt too wide) in paragraph at lines 248--250
+\OT1/cmr/m/n/12 Celkov^^Se zhod-no-cen^^S^^P semestr^^Saln^^S^^P pr^^Sace a zku
+^^Tsenosti z^^S^^Pskan^^Sych b^^Tehem semestru. 
+ []
+
+[11 <./acceleration.png (PNG copy)>] (./zprava.aux) ) 
 Here is how much of TeX's memory you used:
- 523 strings out of 495061
- 6209 string characters out of 1182620
- 58425 words of memory out of 3000000
- 3750 multiletter control sequences out of 15000+50000
- 8410 words of font info for 30 fonts, out of 3000000 for 9000
+ 1233 strings out of 495061
+ 15687 string characters out of 1182620
+ 71208 words of memory out of 3000000
+ 4428 multiletter control sequences out of 15000+50000
+ 8241 words of font info for 29 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 22i,8n,19p,517b,231s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.p
-fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on zprava.pdf (7 pages, 89650 bytes).
+ 25i,8n,19p,522b,242s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1
+/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmm
+i8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on zprava.pdf (11 pages, 274799 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
+ 76 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

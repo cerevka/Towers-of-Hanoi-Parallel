@@ -2,7 +2,7 @@
 \usepackage{epsf,epic,eepic,eepicemu}
 %\documentstyle[epsf,epic,eepic,eepicemu]{article}
 \usepackage[cp1250]{inputenc}
-
+\usepackage{graphicx}
 \begin{document}
 %\oddsidemargin=-5mm \evensidemargin=-5mm \marginparwidth=.08in
 %\marginparsep=.01in \marginparpush=5pt \topmargin=-15mm
@@ -15,7 +15,7 @@
     Paralelní algoritmus pro øešení problému\\[5mm]
        Tomáš Èerevka\\
        Adam Èinèura\\[2mm]
-magisterské studijum, FIT ÈVUT, Kolejní 550/2, 160 00 Praha 6\\[2mm]
+magisterské studium, FIT ÈVUT, Kolejní 550/2, 160 00 Praha 6\\[2mm]
 \today
 \end{center}
 
@@ -56,7 +56,7 @@ Vıpis poètu tahù a jejich posloupností v nasledujícím formátu: eton, pùvodni ty
 Tìsnou dolní mez poètu tahù lze urèit takto: je-li eton na cílové tyèce, ale není na správné pozici, pak musí provést aspoò 2 tahy. Je-li eton na jiné ne cílové tyèce, pak musí provést aspoò 1 tah. Dolní mez je souèet tìchto minimálních poètù tahù pro všechny etony. Tato dolni mez je dosaitelná pro dostateènì velká \textit{s}. 
 
 \section{Popis sekvenèního algoritmu}
-Program pro sekvenèní algoritmus je napsán objektovım pøístupem. Hrací deska, vì, tah tokenem a objekt ukládanı na zásobník jsou reprezentovány kadı svou tøídou. Veškerı vıkonovı kód algoritmu je obsaen ve tøídì Solver. Implementaci vlastního zásobníku jsem neprovádìli, pouili jsme standardní implementaci z knihovny stl.
+Program pro sekvenèní algoritmus je napsán objektovım pøístupem. Hrací deska, vì, tah tokenem a objekt ukládanı na zásobník jsou reprezentovány kadı svou tøídou. Veškerı vıkonovı kód algoritmu je obsaen ve tøídì Solver. Implementaci vlastního zásobníku jsem neprovádìli, pouili jsme standardní implementaci z knihovny STL.
 
 Algoritmus zaèíná naètením vstupních dat, pøipravením vıchozího stavu a jeho uloením na zásobník. Poté algoritmus prohledává stavovı prostor a do hloubky horní meze specifikované v zadání. Pokud algoritmus nalezne øešení, zmenší hloubku prohledávaného prostoru na hloubku nalezeného øešení - ve vìtší hloubce není moné nalézt lepší øešení. V pøípadì, kdy algoritmus nalezne další øešení, lepší (v menší hloubce) ne pùvodní øešení, zmenší opìt hloubku prohledávání na hloubku lepšího øešení.
 
@@ -134,7 +134,7 @@ První èíslo udává hodnotu tokenu, kterım je tah provádìn. Zbylá dvì èísla udávaj
      \end{table}
 
 \section{Popis paralelního algoritmu a jeho implementace v MPI}
-Paralelní algoritmus je typu L-PBB-DFS-D, vznikl paralelizací sekvenèního algoritmu, proto jsou metody pro expanzi zásobníku a vyhodnocení stavu na vrcholu zásobníku stejné.
+Paralelní algoritmus je typu L-PBB-DFS-D, vznikl paralelizací sekvenèního algoritmu, proto jsou metody pro expanzi zásobníku a vyhodnocení stavu na vrcholu zásobníku stejné. Podstatnou zmìnou oproti sekvenènímu øešení je nahrazení zásobníku vektorem - také standardní implementace z STL. Toto nahrazení jsme provedli kvùli zvolenému dìlení zásobníku u dna.
 
 Po spuštìní algoritmu proces MASTER(id=0) naète zadání, provede nìkolik expanzí zásobníku a poté pošle všem ostatním procesùm jejich díl práce. Po pøijetí pøidìlené práce všechny procesy provádìjí sekvenèní prohledávání stavového prostoru(kadı své èásti).
 
@@ -142,7 +142,7 @@ Kadı proces mùe bıt ve stavu aktivní(neprázdnı zásobník), nebo neaktivní(prázd
 
 Aktivní proces provádí vıpoèet a kadou 150. expanzi zkontroluje pøíchozí zprávy. Jak èasto provádìt kontrolu zpráv je nastaveno konstantou a je moné libovolnì mìnit. Pokud má proces ve frontì nìjaké pøíchozí zprávy, provádí jejich zpracování dokud není fronta prázdná. Pokud proces bìhem vıpoètu vyprázdní zásobník, pøejde do stavu neaktivní. 
 
-Neaktivní proces vybere dárce a tomu pošle ádost o práci, pokud má u sebe peška, pošle ho následujícímu procesu ve smìru virtuální hamiltonovské krunici. Poté pouze obsluhuje pøípadné pøíchozí zprávy. Pøi pøíchodu kladné zprávy od dárce uloí poslanou práci na zásobník a pøechází do stavu aktivní, pøi záporné odpovìdi dárce vygeneruje nového dárce a ádost o práci opakuje.
+Neaktivní proces vybere dárce a tomu pošle ádost o práci, pokud má u sebe peška, pošle ho následujícímu procesu ve smìru virtuální hamiltonovské krunice. Poté pouze obsluhuje pøípadné pøíchozí zprávy. Pøi pøíchodu kladné zprávy od dárce uloí poslanou práci na zásobník a pøechází do stavu aktivní, pøi záporné odpovìdi dárce vygeneruje nového dárce a ádost o práci opakuje.
 
 Pro spuštìní algoritmu lze pouít stejnı pøíkaz jako pro spuštìní sekvenèní verze.
 
@@ -155,31 +155,93 @@ Zvolili jsme dìlení zásobníku u dna. U naší úlohy se dá pøedpokládat, e stavy u
 \subsection{Algoritmus pro distribuované ukonèení vıpoètu}
 Pouili jsme modifikovanı Dijkstrùv peškovı algoritmus. Tento algoritmus je vhodnı pøi pouívání dynamického vyvaování zátìe.
 
+\section{Teoretická efektivita algoritmu}
+V nejhorším pøípadì prohledáme sekvenènì celı stavovı prostor. Velikost prostoru závisí na poètu vìí \textit{s} a na poètu tokenù \textit{n}. Proto pro sloitost sekvenèního øešení  platí:$$ SU(s,n)=O(s^{n})$$
 
-\section{Namìøené vısledky a vyhodnocení}
+Pro paralelní vıpoèet jsme se pokoušeli rozdìlit stavovı prostor rovnomìrnì mezi všechny procesory. Vıslednı paralelní èas je dán souètem doby vıpoètu na jednom procesoru$ T_{v} $ a komunikaèních nákladù $ T_{k} $. Paralelní èas lze tady vyjádøit následovnì: $$T(s,n,p) = T_{v} + T_{k} = O( \frac {s^{n}}{p} ) + T_{k}(s,n,p) $$
 
-\begin{enumerate}
-\item Zvolte tøi instance problému s takovou velikostí vstupních dat, pro které má
-sekvenèní algoritmus èasovou sloitost kolem 5, 10 a 15 minut. Pro
-meøení èas potøebnı na ètení dat z disku a uloení na disk
-neuvaujte a zakomentujte ladící tisky, logy, zprávy a vıstupy.
-\item Mìøte paralelní èas pøi pouití $i=2,\cdot,32$ procesorù na sítích Ethernet a InfiniBand.
-%\item Pri mereni kazde instance problemu na dany pocet procesoru spoctete pro vas algoritmus dynamicke delby prace celkovy pocet odeslanych zadosti o praci, prumer na 1 procesor a jejich uspesnost.
-%\item Mereni pro dany pocet procesoru a instanci problemu provedte 3x a pouzijte prumerne hodnoty.
-\item Z namìøenıch dat sestavte grafy zrychlení $S(n,p)$. Zjistìte, zda a za jakych podmínek
-došlo k superlineárnímu zrychlení a pokuste se je zdùvodnit.
-\item Vyhodnoïte komunikaèní sloitost dynamického vyvaování zátìe a posuïte
-vhodnost vámi implementovaného algoritmu pro hledání dárce a dìlení
-zásobníku pri øešení vašeho problému. Posuïte efektivnost a
-škálovatelnost algoritmu. Popište nedostatky vaší implementace a
-navrhnìte zlepšení.
-\item Empiricky stanovte
-granularitu vaší implementace, tj., stupeò paralelismu pro danou
-velikost øešeného problému. Stanovte kritéria pro stanovení mezí, za
-kterımi ji není uèinné rozkládat vıpoèet na menší procesy, protoe
-by komunikaèní náklady preváily urychlení paralelním vıpoètem.
+Pro cenu, zrychlení a efektivnost platí následující vztahy:
+$$C(s,n,p) = p \times T(s,n,p) = p\times( \frac {s^{n}}{p} ) + T_{k}(s,n,p)=O(s^{n})+p\times T_{k}(s,n,p)  $$
+$$S(s,n,p)= \frac{SU(s,n)}{T(s,n,p)} =\frac{O(s^{n})}{O( \frac {s^{n}}{p} ) + T_{k}(s,n,p)} = O(p)$$ U vısledné $S(s,n,p)$je zanedbána komunikaèní reie.
+$$ E(s,n,p) = \frac{SU(s,n)}{C(s,n,p)}= \frac{O(s^{n})}{O(s^{n})+p\times T_{k}(s,n,p)}$$
+Všechny uvedené vztahy pøedpokládají rovnomìrné rozdìlení práce.
 
-\end{enumerate}
+Pro náš algoritmus jsme stanovili hranici, za kterou u se nevyplatí vıpoèet paralelizovat na 8. Pokud procesor má na dnì zásobníku stavy, kterım zbıvá ménì ne 8 krokù k dosaení maximální prohledávané hloubky, u se o tyto stavy s nikım nedìlí a vıpoèet dokonèí sám.
+
+\section{Namìøené vısledky}
+Mìøení jsme provedli tøikrát pro kadı vstup a danı poèet procesorù. Dále prezentované vısledky jsou prùmìrem tìchto tøech mìøení.
+
+Mìøili jsme dobu bìhu paralelního algoritmu, poèet odeslanıch ádostí o práci a poèet odmítnutıch ádostí o práci.
+
+Pouité vstupy:
+\begin{itemize}
+\item Input1.txt - Obsahuje 4 vìe, prohledávání probíhá do hloubky 20. Nejlepší øešení existuje v hloubce 18.
+\item Input2.txt - Obsahuje 4 vìe, prohledávání probíhá do hloubky 23. Nejlepší øešení existuje v hloubce 17.
+\item Input3.txt - Obsahuje 4 vìe, prohledávání probíhá do hloubky 22. Nejlepší øešení existuje v hloubce 15. 
+\end{itemize}
+
+\begin{figure}[h!]
+\begin{center}  
+    \includegraphics[height=125px]{Table1.png}
+     \caption{Tabulka namìøenıch hodnot pro sí InfiniBand}
+    \end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}  
+    \includegraphics[height=125px]{Table2.png}
+     \caption{Tabulka namìøenıch hodnot pro sí Ethernet}
+    \end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}  
+    \includegraphics[height=200px]{infinibandTime.png}
+     \caption{Doba bìhu algoritmu na síti InfiniBand - èasová osa má logaritmické mìøítko}
+    \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}  
+    \includegraphics[height=200px]{ethernetTime.png}
+     \caption{Doba bìhu algoritmu na síti Ethernet - èasová osa má logaritmické mìøítko}
+    \end{center}
+\end{figure}
+
+\newpage
+Jak je patrné z pøedchozích grafù, náš algoritmus bìí stejnì rychle na síti InfiniBand jako na síti Ethernet. Stejnou dobu bìhu si vysvìtlujeme tím, e naše aplikace komunikuje krátkımi zprávami($ \leq 1kb$). Dalším dùvodem je zvolené dìlení zásobníku u dna, kdy posílané stavy pod sebou skrıvají velké mnoství práce díky èemu neprobíhá komunikace nijak intenzivnì.
+
+
+\begin{figure}
+\begin{center}  
+    \includegraphics[height=200px]{infinibandRequests.png}
+     \caption{Poèty ádostí o práci a zamítnutıch ádostí o práci na síti InfiniBand}
+    \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}  
+    \includegraphics[height=200px]{ethernetRequests.png}
+     \caption{Poèty ádostí o práci a zamítnutıch ádostí o práci na síti Ethernet}
+    \end{center}
+\end{figure}
+
+\newpage
+Vıše uvedené grafy zobrazující poèty ádostí o práci ukazují, e námi navrené komunikaèní schéma je velmi úèinné pro pro malé poèty procesorù. Pøi pouití nejvıše 8 procesorù pøesahuje úspìšnost ádostí o práci  90\% . Pøi zvyšujícím se poètu procesorù úspìšnost ádostí klesá a k  50\% . Do tohoto èísla se negativnì promítá doba tìsnì pøed koncem vıpoètu, kdy dochází práce a procesory se pokoušejí nìjakou získat. Dá se proto pøedpokládat, e bìhem vıpoètu mají ádosti o práci vyšší úspìšnost.
+
+\begin{figure}[h!]
+\begin{center}  
+    \includegraphics[height=200px]{acceleration.png}
+     \caption{Graf paralelního zrychlení pro jednotlivé vstupy.}
+    \end{center}
+\end{figure}
+
+
+Z grafu zrychlení vyplıvá, e pro input1 a input3 dosáhl náš algoritmus superlineárního zrychlení. K superlineárnímu zrychlení došlo pravdìpodobnì protoe bylo vıraznì døíve nalezeno øešení v menší hloubce, ne byla hloubka prohledávaná. Tím došlo k omezení prohledávané hloubky a tedy i redukci poètu prohledávanıch stavù. Tomu odpovídá i velkı rozdíl v prohledávané hloubce a hloubce nalezeného øešení.
+
+
+
+
 
 \section{Závìr}
 
@@ -190,41 +252,6 @@ semestru.
 
 \appendix
 
-\section{Návod pro vkládání grafù a obrázkù do Latexu}
 
-Nejjednodušší zpùsob vytvoøení obrázku je pouít vektorovı grafickı
-editor (napø. xfig nebo jfig), ze kterého lze exportovat buï
-\begin{itemize}
-\item postscript formáty (ps nebo eps formát) nebo
-\item latex formáty (v poøadí prostı latex, latex s macry epic, eepic, eepicemu). Uvedené poøadí odpovídá rùstu
-komplikovanosti obrázkù kterı formát podporuje (prostá latex macra
-umonují pouze jednoduché, epic makra nìco mezi, je tøeba
-vyzkoušet).
-
-\end{itemize}
-Následující pøíklady platí pro všechny pøípady.
-
-Obrázek v postscriptu, vycentrovanı a na celou šíøku stránky, s
-popisem a èíslem. Všimnete si, jak øídit velikost obrazku.
-
-
-Latexovské obrázky maji pøípony *.latex, *.epic, *.eepic, a
-*.eepicemu, respective.
-
-Vypuštením závorek {\tt figure} dostanete opìt pouze rámeèek v textu
-bez èísla a popisu.
-
-Takhle jednoduše mùete poskládat obrázky vedle sebe.
-
-Øídit velikost latexovskych obrázkù lze pøíkazem
-\begin{verbatim}
-\setlength{\unitlength}{0.1mm}
-\end{verbatim}
-které mìní mìøítko rastru obrázku, Tyto pøíkazy je ale souèasnì
-nutné vyhodit ze souboru, kterı xfig vygeneroval.
-
-Pro vytváøení grafu lze pouít program gnuplot, kterı umí generovat
-postscriptovy soubor, ktery vloíte do Latexu vıše uvedenım
-zpùsobem.
 
 \end{document}
