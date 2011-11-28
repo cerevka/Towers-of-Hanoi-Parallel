@@ -245,8 +245,13 @@ Z grafu zrychlení vyplývá, že pro input1 a input3 dosáhl náš algoritmus superlin
 
 \section{Závìr}
 
-Celkové zhodnocení semestrální práce a zkušenosti získaných bìhem
-semestru.
+Bìhem vypracovávání semestrální práce jsme se setkali s problémy, které se pøi bìžném sekvenèním programování nevyskytují. To nás nutilo zamyslet se nad nimi z jiného úhlu pohledu, než na který jsme byli doposud zvyklí. Jednalo se pøedevším o techniky dìlby práce mezi procesory, jejich vzájemná komunikace a bitová serializace dat pro posílání po síti.
+
+Kromì toho jsme byli nuceni osvìžit si správu pamìti v C++, pøedevším používání referencí. Odstranìním nadbyteèných kopírujících konstruktorù jsme dosáhli až šesti násobného zrychlení sekvenèního øešení. 
+
+Pøi samotném mìøení na svazku Star jsme se potýkali s nemalým množstvím problémù, které se pøi testování na lokálním poèítaèi nevyskytovaly. Prvním problémem bylo cachování zpráv a jejich dávkové zpracovávání, kvùli èemuž algoritmus selhával pøi ukonèování výpoètu. Na další problém jsme narazili pøi mìøení na síti Ethernet, která nestíhala odesílat asynchronní požadavky, které jsme již považovali za odeslané, dostateènì rychle, takže se nám pøepisoval buffer zpráv. Tato chyba se odhalovala obzvláštì špatnì, jelikož se tváøila jako pøeteèení bufferu.
+
+Za hlavní pøínos práce považujeme praktickou zkušenost s paralelním programováním.
 
 \section{Literatura}
 

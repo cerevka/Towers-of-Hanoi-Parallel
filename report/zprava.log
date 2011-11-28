@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.10.18)  27 NOV 2011 22:11
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.10.18)  28 NOV 2011 15:53
 entering extended mode
  %&-line parsing enabled.
 **zprava.tex
@@ -228,13 +228,20 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <acceleration.png, id=49, 602.25pt x 372.39125pt>
 File: acceleration.png Graphic file (type png)
  <use acceleration.png>
-Overfull \hbox (2.11954pt too wide) in paragraph at lines 248--250
-\OT1/cmr/m/n/12 Celkov^^Se zhod-no-cen^^S^^P semestr^^Saln^^S^^P pr^^Sace a zku
-^^Tsenosti z^^S^^Pskan^^Sych b^^Tehem semestru. 
+[11 <./acceleration.png (PNG copy)>]
+Overfull \hbox (8.74309pt too wide) in paragraph at lines 252--253
+[]\OT1/cmr/m/n/12 P^^Tri samotn^^Sem m^^Te^^Tren^^S^^P na svazku Star jsme se p
+ot^^Sykali s ne-mal^^Sym mno^^Tzstv^^S^^Pm
  []
 
-[11 <./acceleration.png (PNG copy)>]
-Overfull \hbox (1.21495pt too wide) in paragraph at lines 255--256
+
+Overfull \hbox (9.03891pt too wide) in paragraph at lines 252--253
+\OT1/cmr/m/n/12 kter^^Se jsme ji^^Tz pova^^Tzovali za odeslan^^Se, dostate^^Tcn
+^^Te rychle, tak^^Tze se n^^Sam p^^Trepisoval
+ []
+
+
+Overfull \hbox (1.21495pt too wide) in paragraph at lines 260--261
 []\OT1/cmr/m/n/12 Doc. Jirou^^Tsek Radim, DrSc., Metody reprezen-tace a zpra-co
 v^^San^^S^^P znalost^^S^^P
  []
@@ -247,7 +254,7 @@ Here is how much of TeX's memory you used:
  4428 multiletter control sequences out of 15000+50000
  8241 words of font info for 29 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 25i,8n,19p,522b,242s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 25i,8n,19p,578b,242s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
 mbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
 /usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/t
@@ -255,7 +262,7 @@ exmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive
 /fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1
 /public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
 fonts/cm/cmti12.pfb>
-Output written on zprava.pdf (12 pages, 276884 bytes).
+Output written on zprava.pdf (12 pages, 278688 bytes).
 PDF statistics:
  79 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
